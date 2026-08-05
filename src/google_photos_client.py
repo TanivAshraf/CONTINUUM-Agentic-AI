@@ -1,139 +1,170 @@
 """
 src/google_photos_client.py
 ============================
-Google Photos API client for CONTINUUM Agentic AI.
+Google Drive & Photos image ingestion module for CONTINUUM Agentic AI.
 
-Handles OAuth token refresh, media-item enumeration, and downloading raw
-image bytes for downstream Gemini processing. Tracks the last processed
-media item ID in system memory to avoid re-processing.
+Uses Google Drive v3 API to search and ingest image files (JPEG, PNG, WebP)
+from Google Drive and connected Photos storage, tracking processed file IDs
+in system_memory.json for incremental pipeline processing.
 """
 
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
 from typing import Generator
 
-import requests
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
+from googleapiclient.discovery import build
 
 from config.settings import settings
 
 logger = logging.getLogger(__name__)
 
-# Google Photos API base URL
-_PHOTOS_API = "https://photoslibrary.googleapis.com/v1"
 _TOKEN_URL = "https://oauth2.googleapis.com/token"
 
 
 class GooglePhotosClient:
-    """Authenticated client for the Google Photos Library API."""
+    """Authenticated client for Google Drive & Photos image ingestion."""
 
     def __init__(self) -> None:
-        self._credentials: Credentials | None = None
-        self._session = requests.Session()
+        self._service = None
 
-    # ── Authentication ────────────────────────────────────────────────────────
+    def _get_service(self):
+        """Build and cache authorised Google Drive API service."""
+        if self._service is not None:
+            return self._service
 
-    def _build_credentials(self) -> Credentials:
-        """Build (and auto-refresh) OAuth2 credentials from stored tokens."""
         creds = Credentials(
             token=None,
             refresh_token=settings.GOOGLE_PHOTOS_REFRESH_TOKEN,
             token_uri=_TOKEN_URL,
             client_id=settings.GOOGLE_CLIENT_ID,
             client_secret=settings.GOOGLE_CLIENT_SECRET,
-            scopes=["https://www.googleapis.com/auth/photoslibrary.readonly"],
+            scopes=[
+                "https://www.googleapis.com/auth/drive.readonly",
+                "https://www.googleapis.com/auth/photoslibrary.readonly",
+            ],
         )
         creds.refresh(Request())
-        return creds
-
-    def _get_headers(self) -> dict[str, str]:
-        """Return authorised request headers, refreshing the token if needed."""
-        if self._credentials is None or not self._credentials.valid:
-            self._credentials = self._build_credentials()
-        return {"Authorization": f"Bearer {self._credentials.token}"}
-
-    # ── Media Item Retrieval ──────────────────────────────────────────────────
+        self._service = build("drive", "v3", credentials=creds, cache_discovery=False)
+        return self._service
 
     def list_recent_media_items(
         self,
-        page_size: int = 25,
+        page_size: int = 10,
         since_item_id: str | None = None,
     ) -> Generator[dict, None, None]:
         """
-        Yield media items from Google Photos in reverse-chronological order.
+        Yield recent image files from Google Drive / Photos in reverse-chronological order.
 
         Args:
-            page_size: Number of items per API page (max 100).
-            since_item_id: Stop iteration when this item ID is encountered,
-                           useful for incremental processing.
+            page_size: Number of items per API page.
+            since_item_id: Stop iteration when this file ID is encountered.
 
         Yields:
-            Raw media-item dicts from the Google Photos API.
+            Standardised media-item dict compatible with CONTINUUM pipeline.
         """
+        try:
+            service = self._get_service()
+        except Exception as exc:
+            logger.warning("Google Drive client authorization error: %s", exc)
+            return
+
         page_token: str | None = None
+        query = (
+            "mimeType contains 'image/' and trashed = false "
+            "and not name contains 'Screenshot' "
+            "and not name contains 'Screen_Shot' "
+            "and not name contains 'capture'"
+        )
+        yielded_count = 0
 
         while True:
-            payload: dict = {"pageSize": page_size}
+            params = {
+                "q": query,
+                "orderBy": "createdTime desc",
+                "pageSize": min(page_size, 100),
+                "fields": "nextPageToken, files(id, name, mimeType, createdTime, webContentLink, thumbnailLink)",
+            }
             if page_token:
-                payload["pageToken"] = page_token
+                params["pageToken"] = page_token
 
             try:
-                response = self._session.get(
-                    f"{_PHOTOS_API}/mediaItems",
-                    headers=self._get_headers(),
-                    params=payload,
-                    timeout=30,
+                result = service.files().list(**params).execute()
+            except Exception as exc:
+                logger.warning(
+                    "Google Drive image query failed (insufficient scope or permission): %s",
+                    exc,
                 )
-                response.raise_for_status()
-            except requests.exceptions.HTTPError as exc:
-                if exc.response is not None and exc.response.status_code == 403:
+                return
+
+            files = result.get("files", [])
+            
+            # Prioritise camera filenames (PXL_, IMG_, .jpg, .jpeg) over generic files
+            def _is_camera_file(f: dict) -> bool:
+                fname = f.get("name", "").lower()
+                return (
+                    fname.startswith("pxl_")
+                    or fname.startswith("img_")
+                    or fname.endswith(".jpg")
+                    or fname.endswith(".jpeg")
+                )
+
+            # Sort files so camera photos come first
+            files.sort(key=lambda f: 0 if _is_camera_file(f) else 1)
+
+            for file_item in files:
+                file_id = file_item["id"]
+                fname = file_item.get("name", "").lower()
+
+                # Additional python-side safeguard against screenshots/captures
+                if any(x in fname for x in ("screenshot", "screen_shot", "screen", "capture")):
+                    continue
+
+                if since_item_id and file_id == since_item_id:
                     logger.info(
-                        "Google Photos direct library listing restricted by Google API policy. "
-                        "Falling back to Gmail photo attachment parsing."
+                        "Reached last processed image file %s — stopping.", since_item_id
                     )
                     return
-                raise exc
 
-            data = response.json()
-
-            items = data.get("mediaItems", [])
-            for item in items:
-                if since_item_id and item.get("id") == since_item_id:
-                    logger.info(
-                        "Reached last processed item %s — stopping.", since_item_id
-                    )
+                yield {
+                    "id": file_id,
+                    "name": file_item.get("name", "untitled.jpg"),
+                    "baseUrl": file_id,
+                    "mediaMetadata": {
+                        "creationTime": file_item.get("createdTime", "")
+                    },
+                    "mimeType": file_item.get("mimeType", "image/jpeg"),
+                }
+                yielded_count += 1
+                if yielded_count >= page_size:
                     return
-                yield item
 
-            page_token = data.get("nextPageToken")
+            page_token = result.get("nextPageToken")
             if not page_token:
                 break
 
-    def download_image_bytes(self, base_url: str, width: int = 1024) -> bytes:
+    def download_image_bytes(self, file_id_or_url: str, width: int = 1024) -> bytes:
         """
-        Download raw image bytes from a Google Photos base URL.
+        Download raw image bytes for a Google Drive file ID.
 
         Args:
-            base_url: The baseUrl field from a media-item response.
-            width: Desired width in pixels (height is auto-scaled).
+            file_id_or_url: The Google Drive file ID.
+            width: Parameter preserved for signature compatibility.
 
         Returns:
-            Raw image bytes (JPEG).
+            Raw image bytes.
         """
-        download_url = f"{base_url}=w{width}"
-        response = self._session.get(download_url, timeout=60)
-        response.raise_for_status()
-        return response.content
+        service = self._get_service()
+        logger.info("Downloading image bytes for file ID: %s", file_id_or_url)
+        return service.files().get_media(fileId=file_id_or_url).execute()
 
     def get_item_metadata(self, media_item_id: str) -> dict:
-        """Fetch metadata for a single media item by ID."""
-        response = self._session.get(
-            f"{_PHOTOS_API}/mediaItems/{media_item_id}",
-            headers=self._get_headers(),
-            timeout=30,
+        """Fetch metadata for a single Google Drive file by ID."""
+        service = self._get_service()
+        return (
+            service.files()
+            .get(fileId=media_item_id, fields="id, name, mimeType, createdTime, size")
+            .execute()
         )
-        response.raise_for_status()
-        return response.json()

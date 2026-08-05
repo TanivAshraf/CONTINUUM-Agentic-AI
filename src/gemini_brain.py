@@ -249,10 +249,11 @@ class GeminiBrain:
 
         prompt = (
             "You are an AI photo editor selecting the single best photo for a blog post.\n"
+            "CRITICAL REQUIREMENT: Always select real-world camera photographs (scenery, street views, travel spots, food, cultural landmarks, camera photos). REJECT software screenshots, UI dashboards, web browser captures, or system diagrams.\n\n"
             f"Topic Context: {topic_hint or 'Life logging, tech devlog, travel, digital nomad'}\n\n"
             "Candidate Photos:\n"
             f"{json.dumps(candidates_summary, indent=2)}\n\n"
-            "Evaluate the candidates based on freshness, image type, and story relevance.\n"
+            "Evaluate the candidates based on real-world photo quality, freshness, camera filename priority (PXL_, IMG_), and story relevance.\n"
             "Respond with ONLY a JSON object with this exact key:\n"
             '{"selected_index": 0, "reasoning": "..."}\n'
             "where selected_index is the 0-based integer index of your chosen photo."
