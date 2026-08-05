@@ -51,14 +51,15 @@ class Settings:
     )
 
     # ── Google OAuth / Photos ─────────────────────────────────────────────────
+    # These become required once OAuth is configured via scripts/setup_google_oauth.py
     GOOGLE_PHOTOS_REFRESH_TOKEN: str = field(
-        default_factory=lambda: _require("GOOGLE_PHOTOS_REFRESH_TOKEN")
+        default_factory=lambda: _optional("GOOGLE_PHOTOS_REFRESH_TOKEN")
     )
     GOOGLE_CLIENT_ID: str = field(
-        default_factory=lambda: _require("GOOGLE_CLIENT_ID")
+        default_factory=lambda: _optional("GOOGLE_CLIENT_ID")
     )
     GOOGLE_CLIENT_SECRET: str = field(
-        default_factory=lambda: _require("GOOGLE_CLIENT_SECRET")
+        default_factory=lambda: _optional("GOOGLE_CLIENT_SECRET")
     )
 
     # ── Gmail / Booking ───────────────────────────────────────────────────────
