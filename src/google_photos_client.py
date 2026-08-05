@@ -80,13 +80,23 @@ class GooglePhotosClient:
             if page_token:
                 payload["pageToken"] = page_token
 
-            response = self._session.get(
-                f"{_PHOTOS_API}/mediaItems",
-                headers=self._get_headers(),
-                params=payload,
-                timeout=30,
-            )
-            response.raise_for_status()
+            try:
+                response = self._session.get(
+                    f"{_PHOTOS_API}/mediaItems",
+                    headers=self._get_headers(),
+                    params=payload,
+                    timeout=30,
+                )
+                response.raise_for_status()
+            except requests.exceptions.HTTPError as exc:
+                if exc.response is not None and exc.response.status_code == 403:
+                    logger.info(
+                        "Google Photos direct library listing restricted by Google API policy. "
+                        "Falling back to Gmail photo attachment parsing."
+                    )
+                    return
+                raise exc
+
             data = response.json()
 
             items = data.get("mediaItems", [])

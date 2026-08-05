@@ -32,6 +32,7 @@ CLIENT_SECRET_FILE = ROOT / "client_secret.json"
 # ── Required OAuth scopes ─────────────────────────────────────────────────────
 SCOPES = [
     "https://www.googleapis.com/auth/photoslibrary.readonly",
+    "https://www.googleapis.com/auth/photoslibrary",
     "https://www.googleapis.com/auth/gmail.readonly",
 ]
 
@@ -139,11 +140,7 @@ def run_oauth_flow() -> None:
     for scope in SCOPES:
         print(f"    • {scope}")
     print()
-    print("  A browser window will open for you to sign in and grant access.")
-    print("  If your browser doesn't open automatically, copy the URL printed")
-    print("  to the terminal and paste it into any browser.")
-    print()
-    input("  Press [ENTER] to begin the OAuth flow...")
+    print("  Launching browser consent window...")
     print()
 
     # ── Run InstalledAppFlow ──────────────────────────────────────────────────
@@ -154,6 +151,10 @@ def run_oauth_flow() -> None:
             str(CLIENT_SECRET_FILE),
             scopes=SCOPES,
         )
+        auth_url, _ = flow.authorization_url(prompt="consent", access_type="offline")
+        print("  If browser does not open automatically, visit this URL:")
+        print(f"\n  {auth_url}\n")
+        sys.stdout.flush()
         # run_local_server opens the browser and handles the redirect on localhost
         credentials = flow.run_local_server(
             port=0,                  # pick any available port
