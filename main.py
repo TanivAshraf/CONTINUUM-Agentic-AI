@@ -89,19 +89,29 @@ def step_process_photos(
         tags=analysis.get("tags", []),
     )
 
-    media_id = publisher.upload_featured_image(
+    media_info = publisher.upload_media(
         image_bytes=image_bytes,
         filename=f"continuum_{item['id'][:8]}.jpg",
-        alt_text=wp_data.get("featured_image_alt_text", ""),
+        alt_text=wp_data.get("featured_image_alt_text", analysis["title"]),
+        caption=analysis.get("detected_location", analysis["title"]),
     )
+
+    caption_text = analysis.get("detected_location") or analysis["title"]
+    figure_html = (
+        f'<figure class="wp-block-image">'
+        f'<img src="{media_info["source_url"]}" alt="{wp_data.get("featured_image_alt_text", analysis["title"])}" />'
+        f'<figcaption>{caption_text}</figcaption>'
+        f'</figure>\n\n'
+    )
+    full_html_content = figure_html + wp_data["html_content"]
 
     post = publisher.create_post(
         title=analysis["title"],
-        html_content=wp_data["html_content"],
+        html_content=full_html_content,
         excerpt=wp_data.get("excerpt", ""),
         tags=wp_data.get("tags", []),
-        categories=wp_data.get("categories", ["Travel", "Life Log"]),
-        featured_media_id=media_id,
+        categories=wp_data.get("categories", ["Travel Stories", "AI Agent Development"]),
+        featured_media_id=media_info["media_id"],
     )
 
     research.log_photo_processed(item["id"], capture_date, analysis)
