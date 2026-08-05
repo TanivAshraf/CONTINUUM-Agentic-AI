@@ -137,6 +137,76 @@ class GeminiBrain:
         raw = self._generate(contents)
         return self._extract_json(raw)
 
+    def select_best_photo(
+        self,
+        candidate_photos: list[dict[str, Any]],
+        topic_hint: str = "",
+    ) -> dict[str, Any]:
+        """
+        AI-driven intelligent photo selection.
+
+        Passes candidate photo metadata to Gemini 2.0 to judge which photo
+        best matches the post topic/story.
+
+        Args:
+            candidate_photos: List of media item dicts ('id', 'name', 'mediaMetadata', etc.).
+            topic_hint: Optional topic or title context hint.
+
+        Returns:
+            The chosen media item dict from candidate_photos.
+        """
+        if not candidate_photos:
+            raise ValueError("No candidate photos provided for selection.")
+
+        if len(candidate_photos) == 1:
+            return candidate_photos[0]
+
+        logger.info(
+            "Selecting best photo out of %d candidates using Gemini AI (topic_hint='%s')...",
+            len(candidate_photos),
+            topic_hint,
+        )
+
+        candidates_summary = []
+        for idx, item in enumerate(candidate_photos):
+            creation_time = item.get("mediaMetadata", {}).get("creationTime", "unknown")
+            candidates_summary.append({
+                "candidate_index": idx,
+                "file_id": item.get("id"),
+                "filename": item.get("name", "untitled"),
+                "creation_time": creation_time,
+                "mime_type": item.get("mimeType", "image/jpeg"),
+            })
+
+        prompt = (
+            "You are an AI photo editor selecting the single best photo for a blog post.\n"
+            f"Topic Context: {topic_hint or 'Life logging, tech devlog, travel, digital nomad'}\n\n"
+            "Candidate Photos:\n"
+            f"{json.dumps(candidates_summary, indent=2)}\n\n"
+            "Evaluate the candidates based on freshness, image type, and story relevance.\n"
+            "Respond with ONLY a JSON object with this exact key:\n"
+            '{"selected_index": 0, "reasoning": "..."}\n'
+            "where selected_index is the 0-based integer index of your chosen photo."
+        )
+
+        try:
+            raw = self._generate([prompt])
+            parsed = self._extract_json(raw)
+            selected_idx = int(parsed.get("selected_index", 0))
+            if 0 <= selected_idx < len(candidate_photos):
+                selected_photo = candidate_photos[selected_idx]
+                logger.info(
+                    "Gemini selected candidate #%d ('%s') — reasoning: %s",
+                    selected_idx,
+                    selected_photo.get("name", selected_photo["id"]),
+                    parsed.get("reasoning", "highest relevance"),
+                )
+                return selected_photo
+        except Exception as exc:
+            logger.warning("Photo selection fallback due to error: %s", exc)
+
+        return candidate_photos[0]
+
     def parse_booking_email(self, email_body: str) -> dict[str, Any]:
         """
         Extract structured booking data from raw email text.

@@ -71,7 +71,14 @@ def step_process_photos(
         return memory
 
     logger.info("Found %d new media item(s) to process.", len(new_items))
-    item = new_items[0]
+
+    # AI-Driven Intelligent Photo Selection
+    selected_item = brain.select_best_photo(
+        candidate_photos=new_items,
+        topic_hint="CONTINUUM Agentic AI Architecture, Life Logging, Tech DevLog, Travel",
+    )
+    item = selected_item
+
     capture_date = item.get("mediaMetadata", {}).get("creationTime", "unknown date")
     image_bytes = photos.download_image_bytes(item["baseUrl"])
 
