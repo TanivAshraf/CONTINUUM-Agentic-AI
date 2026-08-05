@@ -1,0 +1,21 @@
+# ── Core AI / Gemini ──────────────────────────────────────────────────────────
+google-genai>=1.0.0
+
+# ── Google Auth & APIs ────────────────────────────────────────────────────────
+google-auth>=2.29.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+google-api-python-client>=2.127.0
+
+# ── HTTP / REST ───────────────────────────────────────────────────────────────
+requests>=2.31.0
+
+# ── Environment / Configuration ───────────────────────────────────────────────
+python-dotenv>=1.0.1
+
+# ── Data Handling ─────────────────────────────────────────────────────────────
+python-dateutil>=2.9.0
+
+# ── Logging / Utilities ───────────────────────────────────────────────────────
+rich>=13.7.0           # Beautiful terminal output for pipeline logs
+tenacity>=8.3.0        # Retry logic with exponential back-off

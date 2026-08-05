@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "description": "CONTINUUM Agentic AI — persistent system memory",
+    "version": "1.0.0",
+    "last_updated": null
+  },
+  "google_photos": {
+    "last_processed_media_item_id": null,
+    "last_processed_timestamp": null,
+    "total_items_processed": 0
+  },
+  "gmail": {
+    "last_processed_message_id": null,
+    "last_processed_timestamp": null,
+    "total_messages_processed": 0
+  },
+  "wordpress": {
+    "last_published_post_id": null,
+    "last_published_timestamp": null,
+    "total_posts_published": 0,
+    "draft_queue": []
+  },
+  "research": {
+    "session_count": 0,
+    "last_session_timestamp": null
+  }
+}
