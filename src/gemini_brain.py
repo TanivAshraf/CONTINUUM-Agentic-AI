@@ -135,11 +135,8 @@ class GeminiBrain:
                     if next_idx < len(self.candidate_models):
                         next_model = self.candidate_models[next_idx]
                         logger.warning(
-                            "Model error/quota limit hit on model '%s' (%s). "
-                            "Failing over to candidate model '%s'...",
+                            "[GeminiBrain] Rate limit (429) hit on model '%s'. Failing over to next model...",
                             current_model,
-                            err_msg[:100],
-                            next_model,
                         )
                         last_exception = exc
                         continue
