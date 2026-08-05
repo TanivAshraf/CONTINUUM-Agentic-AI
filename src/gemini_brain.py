@@ -43,41 +43,113 @@ from config.system_prompts import (
 logger = logging.getLogger(__name__)
 
 
+import os
+
+
 class GeminiBrain:
     """
     Unified Gemini API client for all CONTINUUM AI processing tasks.
 
     Configures the SDK once at instantiation and exposes task-specific
     methods that construct appropriate prompts, call the model, and parse
-    the structured JSON responses.
+    the structured JSON responses. Supports smart model failover on 429 quota errors.
     """
 
     def __init__(self) -> None:
         self._client = genai.Client(api_key=settings.GEMINI_API_KEY)
-        self._model = settings.GEMINI_MODEL
+        primary_model = os.getenv(
+            "GEMINI_MODEL", getattr(settings, "GEMINI_MODEL", "gemini-flash-latest")
+        )
+
+        # Candidate model failover chain (validated against API model list)
+        candidates = [
+            primary_model,
+            "gemini-2.5-flash",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-pro",
+            "gemini-pro-latest",
+        ]
+        # Deduplicate while preserving order
+        self.candidate_models: list[str] = []
+        for m in candidates:
+            if m and m not in self.candidate_models:
+                self.candidate_models.append(m)
+
+        self._model_index = 0
+        self._model = self.candidate_models[0]
         self._config = genai_types.GenerateContentConfig(
             temperature=0.7,
             top_p=0.9,
             max_output_tokens=8192,
         )
-        logger.info("GeminiBrain initialised with model: %s", self._model)
+        logger.info(
+            "GeminiBrain initialised with primary model: '%s' (Failover chain: %s)",
+            self._model,
+            self.candidate_models,
+        )
 
     # ── Internal Helpers ──────────────────────────────────────────────────────
 
     @retry(
         retry=retry_if_exception_type(Exception),
-        wait=wait_exponential(multiplier=1, min=2, max=30),
-        stop=stop_after_attempt(4),
+        wait=wait_exponential(multiplier=1, min=1, max=10),
+        stop=stop_after_attempt(2),
         reraise=True,
     )
-    def _generate(self, contents: list) -> str:
-        """Low-level generation call with automatic retry on failure."""
+    def _call_model_with_retry(self, model_name: str, contents: list) -> str:
+        """Single model call with exponential backoff on transient errors."""
         response = self._client.models.generate_content(
-            model=self._model,
+            model=model_name,
             contents=contents,
             config=self._config,
         )
         return response.text
+
+    def _generate(self, contents: list) -> str:
+        """
+        Low-level generation call with smart model failover on 429 / quota / 404 errors.
+        Iterates through candidate_models on rate limit or 429 quota exhaustion.
+        """
+        last_exception = None
+
+        for idx in range(self._model_index, len(self.candidate_models)):
+            current_model = self.candidate_models[idx]
+            self._model_index = idx
+            self._model = current_model
+
+            try:
+                return self._call_model_with_retry(current_model, contents)
+            except Exception as exc:
+                err_msg = str(exc)
+                should_failover = (
+                    "429" in err_msg
+                    or "404" in err_msg
+                    or "RESOURCE_EXHAUSTED" in err_msg
+                    or "Quota" in err_msg
+                    or "quota" in err_msg
+                    or "not found" in err_msg
+                )
+                if should_failover:
+                    next_idx = idx + 1
+                    if next_idx < len(self.candidate_models):
+                        next_model = self.candidate_models[next_idx]
+                        logger.warning(
+                            "Model error/quota limit hit on model '%s' (%s). "
+                            "Failing over to candidate model '%s'...",
+                            current_model,
+                            err_msg[:100],
+                            next_model,
+                        )
+                        last_exception = exc
+                        continue
+
+                logger.error("Generation failed on model '%s': %s", current_model, exc)
+                raise exc
+
+        if last_exception:
+            raise last_exception
+        raise RuntimeError("All candidate Gemini models failed generation.")
 
     @staticmethod
     def _extract_json(raw_text: str) -> dict[str, Any]:
