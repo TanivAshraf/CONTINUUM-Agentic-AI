@@ -22,6 +22,7 @@ import json
 import logging
 import sys
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 from rich.console import Console
 from rich.logging import RichHandler
@@ -35,6 +36,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger("continuum")
 console = Console()
+
+SHANGHAI_TZ = ZoneInfo("Asia/Shanghai")
+
+
+def _format_shanghai_time(iso_ts: str) -> str:
+    """Normalize timestamp to Asia/Shanghai (UTC+8) timezone string."""
+    try:
+        dt = datetime.fromisoformat(iso_ts.replace("Z", "+00:00")).astimezone(SHANGHAI_TZ)
+        return dt.strftime("%B %d, %Y at %I:%M %p (CST)")
+    except Exception:
+        return iso_ts
+
 
 # ── CONTINUUM Modules ─────────────────────────────────────────────────────────
 from config.settings import settings
@@ -72,23 +85,37 @@ def step_process_photos(
 
     logger.info("Found %d new media item(s) to process.", len(new_items))
 
-    # AI-Driven Intelligent Photo Selection
-    selected_item = brain.select_best_photo(
+    # 1. AI-Driven Batch Photo Selection (Primary + Supporting)
+    batch = brain.select_photo_batch(
         candidate_photos=new_items,
-        topic_hint="CONTINUUM Agentic AI Architecture, Life Logging, Tech DevLog, Travel",
+        max_count=4,
+        topic_hint="CONTINUUM Agentic AI Architecture, Life Logging, Tech DevLog, Travel, China Trip",
     )
-    item = selected_item
 
-    capture_date = item.get("mediaMetadata", {}).get("creationTime", "unknown date")
-    image_bytes = photos.download_image_bytes(item["baseUrl"])
+    primary_item = batch["primary_photo"]
+    supporting_items = batch.get("supporting_photos", [])
 
+    # 2. Timezone Normalization (Asia/Shanghai UTC+8)
+    raw_creation_time = primary_item.get("mediaMetadata", {}).get("creationTime", "")
+    capture_date_shanghai = _format_shanghai_time(raw_creation_time) if raw_creation_time else "recent"
+
+    # 3. Download image bytes for primary and supporting photos
+    primary_bytes = photos.download_image_bytes(primary_item["baseUrl"])
+    supporting_bytes_list = [photos.download_image_bytes(item["baseUrl"]) for item in supporting_items]
+    all_image_bytes = [primary_bytes] + supporting_bytes_list
+
+    # 4. Multimodal Analysis with Semantic Deduplication
     memory_context = json.dumps(memory.get("wordpress", {}), indent=2)
+    past_topics = memory.get("wordpress", {}).get("past_topics", [])
+    past_titles = memory.get("wordpress", {}).get("past_titles", [])
+
     analysis = brain.analyse_photos(
-        image_bytes_list=[image_bytes],
-        capture_date=capture_date,
+        image_bytes_list=all_image_bytes,
+        capture_date=capture_date_shanghai,
         memory_context=memory_context,
+        past_topics=past_topics + past_titles,
     )
-    logger.info("Photo analysed — title: '%s'", analysis.get("title", "untitled"))
+    logger.info("Photos analysed — title: '%s'", analysis.get("title", "untitled"))
 
     wp_data = brain.format_for_wordpress(
         title=analysis["title"],
@@ -96,55 +123,98 @@ def step_process_photos(
         tags=analysis.get("tags", []),
     )
 
-    media_info = publisher.upload_media(
-        image_bytes=image_bytes,
-        filename=f"continuum_{item['id'][:8]}.jpg",
+    # 5. Upload Primary Photo (Featured Media)
+    primary_media = publisher.upload_media(
+        image_bytes=primary_bytes,
+        filename=f"continuum_primary_{primary_item['id'][:8]}.jpg",
         alt_text=wp_data.get("featured_image_alt_text", analysis["title"]),
         caption=analysis.get("detected_location", analysis["title"]),
     )
 
-    caption_text = analysis.get("detected_location") or analysis["title"]
-    figure_html = (
-        f'<figure class="wp-block-image">'
-        f'<img src="{media_info["source_url"]}" alt="{wp_data.get("featured_image_alt_text", analysis["title"])}" />'
-        f'<figcaption>{caption_text}</figcaption>'
+    # 6. Upload Supporting Photos and build Gutenberg figure blocks
+    gutenberg_figures_html = ""
+    for idx, (s_item, s_bytes) in enumerate(zip(supporting_items, supporting_bytes_list)):
+        s_media = publisher.upload_media(
+            image_bytes=s_bytes,
+            filename=f"continuum_supp_{s_item['id'][:8]}.jpg",
+            alt_text=f"{analysis['title']} - Photo {idx+2}",
+            caption=f"Supporting view from {analysis.get('detected_location', 'China trip')}",
+        )
+        s_caption = s_media.get("caption", f"Supporting visual #{idx+1}")
+        gutenberg_figures_html += (
+            f'<!-- wp:image {{"id":{s_media["media_id"]},"sizeSlug":"full","linkDestination":"none"}} -->\n'
+            f'<figure class="wp-block-image size-full">'
+            f'<img src="{s_media["source_url"]}" alt="{s_media["alt_text"]}" class="wp-image-{s_media["media_id"]}"/>'
+            f'<figcaption>{s_caption}</figcaption>'
+            f'</figure>\n'
+            f'<!-- /wp:image -->\n\n'
+        )
+
+    # Combine figures with HTML body content
+    primary_figure = (
+        f'<figure class="wp-block-image size-full">'
+        f'<img src="{primary_media["source_url"]}" alt="{wp_data.get("featured_image_alt_text", analysis["title"])}" />'
+        f'<figcaption>{analysis.get("detected_location", analysis["title"])}</figcaption>'
         f'</figure>\n\n'
     )
-    full_html_content = figure_html + wp_data["html_content"]
+    full_html_content = primary_figure + wp_data["html_content"] + ("\n\n" + gutenberg_figures_html if gutenberg_figures_html else "")
 
+    # 7. Create WordPress Post
     post = publisher.create_post(
         title=analysis["title"],
         html_content=full_html_content,
         excerpt=wp_data.get("excerpt", ""),
         tags=wp_data.get("tags", []),
         categories=wp_data.get("categories", ["Travel Stories", "AI Agent Development"]),
-        featured_media_id=media_info["media_id"],
+        featured_media_id=primary_media["media_id"],
         status=settings.WP_POST_STATUS,
         seo_title=wp_data.get("seo_title", ""),
         seo_description=wp_data.get("seo_description", ""),
         focus_keyword=wp_data.get("focus_keyword", ""),
     )
 
-    research.log_photo_processed(item["id"], capture_date, analysis)
+    # 8. Live Post Verification Loop
+    is_live = publisher.verify_live_post(post["id"])
+    if not is_live:
+        logger.warning("[WordPress] Post id=%d status verification returned unconfirmed live status.", post["id"])
+
+    # 9. Research Logging
+    research.log_photo_processed(primary_item["id"], capture_date_shanghai, analysis)
     research.log_post_published(
         post_id=post["id"],
         title=analysis["title"],
         url=post.get("link", ""),
         tags=analysis.get("tags", []),
-        source_media_id=item["id"],
+        source_media_id=primary_item["id"],
     )
 
-    memory.setdefault("google_photos", {})["last_processed_media_item_id"] = item["id"]
+    # 10. Update Memory (Incremental tracking + Semantic deduplication)
+    memory.setdefault("google_photos", {})["last_processed_media_item_id"] = primary_item["id"]
     memory.setdefault("google_photos", {})["last_processed_timestamp"] = (
-        datetime.now(timezone.utc).isoformat()
+        datetime.now(SHANGHAI_TZ).isoformat()
     )
     memory.setdefault("wordpress", {})["last_published_post_id"] = post["id"]
     memory["wordpress"]["total_posts_published"] = (
         memory["wordpress"].get("total_posts_published", 0) + 1
     )
 
+    # Deduplication updates
+    past_titles_list = memory.setdefault("wordpress", {}).setdefault("past_titles", [])
+    if analysis["title"] not in past_titles_list:
+        past_titles_list.append(analysis["title"])
+
+    past_topics_list = memory.setdefault("wordpress", {}).setdefault("past_topics", [])
+    for tag in analysis.get("tags", []):
+        if tag not in past_topics_list:
+            past_topics_list.append(tag)
+
+    hashes_list = memory.setdefault("research", {}).setdefault("processed_file_hashes", [])
+    for item in [primary_item] + supporting_items:
+        if item["id"] not in hashes_list:
+            hashes_list.append(item["id"])
+
     console.print(
-        f"[bold green]✅ Published:[/bold green] {analysis['title']} → {post.get('link')}"
+        f"[bold green]✅ Published & Verified Live:[/bold green] {analysis['title']} → {post.get('link')}"
     )
     return memory
 

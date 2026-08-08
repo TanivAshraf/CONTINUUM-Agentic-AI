@@ -173,6 +173,7 @@ class GeminiBrain:
         image_bytes_list: list[bytes],
         capture_date: str,
         memory_context: str = "",
+        past_topics: list[str] | None = None,
     ) -> dict[str, Any]:
         """
         Analyse one or more photos and generate blog content.
@@ -181,6 +182,7 @@ class GeminiBrain:
             image_bytes_list: List of raw JPEG image byte strings.
             capture_date: Human-readable date string for the images.
             memory_context: Optional context string from system memory.
+            past_topics: Optional list of past published topics for semantic deduplication.
 
         Returns:
             Parsed JSON dict with title, narrative, tags, etc.
@@ -189,8 +191,15 @@ class GeminiBrain:
             "Analysing %d image(s) captured on %s", len(image_bytes_list), capture_date
         )
 
+        dedup_rule = ""
+        if past_topics:
+            dedup_rule = (
+                f"\n\nSYSTEM RULE: Ensure the story angle is 100% unique. "
+                f"DO NOT repeat topics or narrative themes from past posts: {', '.join(past_topics[:10])}"
+            )
+
         # Build multimodal content list: [system text, images..., user text]
-        contents: list = [PHOTO_ANALYSIS_SYSTEM]
+        contents: list = [PHOTO_ANALYSIS_SYSTEM + dedup_rule]
         for img_bytes in image_bytes_list:
             contents.append(
                 genai_types.Part.from_bytes(data=img_bytes, mime_type="image/jpeg")
@@ -206,32 +215,36 @@ class GeminiBrain:
         raw = self._generate(contents)
         return self._extract_json(raw)
 
-    def select_best_photo(
+    def select_photo_batch(
         self,
         candidate_photos: list[dict[str, Any]],
+        max_count: int = 4,
         topic_hint: str = "",
     ) -> dict[str, Any]:
         """
-        AI-driven intelligent photo selection.
+        AI-driven batch photo selection.
 
-        Passes candidate photo metadata to Gemini 2.0 to judge which photo
-        best matches the post topic/story.
-
-        Args:
-            candidate_photos: List of media item dicts ('id', 'name', 'mediaMetadata', etc.).
-            topic_hint: Optional topic or title context hint.
+        Evaluates candidate photos and selects:
+          - 1 Primary Photo (for Featured Image)
+          - Up to max_count-1 Supporting Photos (for body story)
+          - Rejects near-duplicates, screenshots, and UI diagrams.
 
         Returns:
-            The chosen media item dict from candidate_photos.
+          {"primary_photo": dict, "supporting_photos": list[dict], "reasoning": str}
         """
         if not candidate_photos:
-            raise ValueError("No candidate photos provided for selection.")
+            raise ValueError("No candidate photos provided for batch selection.")
 
         if len(candidate_photos) == 1:
-            return candidate_photos[0]
+            return {
+                "primary_photo": candidate_photos[0],
+                "supporting_photos": [],
+                "reasoning": "Single candidate photo available.",
+            }
 
         logger.info(
-            "Selecting best photo out of %d candidates using Gemini AI (topic_hint='%s')...",
+            "Selecting photo batch (max %d) out of %d candidates using Gemini AI (topic_hint='%s')...",
+            max_count,
             len(candidate_photos),
             topic_hint,
         )
@@ -247,35 +260,74 @@ class GeminiBrain:
                 "mime_type": item.get("mimeType", "image/jpeg"),
             })
 
+        max_supporting = max(0, max_count - 1)
         prompt = (
-            "You are an AI photo editor selecting the single best photo for a blog post.\n"
-            "CRITICAL REQUIREMENT: Always select real-world camera photographs (scenery, street views, travel spots, food, cultural landmarks, camera photos). REJECT software screenshots, UI dashboards, web browser captures, or system diagrams.\n\n"
+            "You are an expert AI photo editor selecting a batch of photos for a blog post.\n"
+            "CRITICAL REQUIREMENTS:\n"
+            "1. Always select real-world camera photographs (scenery, street views, travel spots, food, cultural landmarks, camera photos).\n"
+            "2. REJECT software screenshots, UI dashboards, web browser captures, system diagrams, or near-duplicate shots of the exact same subject.\n"
+            f"3. Select 1 PRIMARY PHOTO (best overall shot for featured image) and up to {max_supporting} DISTINCT SUPPORTING PHOTOS for the body story.\n\n"
             f"Topic Context: {topic_hint or 'Life logging, tech devlog, travel, digital nomad'}\n\n"
             "Candidate Photos:\n"
             f"{json.dumps(candidates_summary, indent=2)}\n\n"
-            "Evaluate the candidates based on real-world photo quality, freshness, camera filename priority (PXL_, IMG_), and story relevance.\n"
-            "Respond with ONLY a JSON object with this exact key:\n"
-            '{"selected_index": 0, "reasoning": "..."}\n'
-            "where selected_index is the 0-based integer index of your chosen photo."
+            "Respond with ONLY a JSON object with this exact schema:\n"
+            '{\n'
+            '  "primary_index": 0,\n'
+            '  "supporting_indices": [1, 2],\n'
+            '  "reasoning": "..."\n'
+            '}\n'
+            "where primary_index is the 0-based integer index of the primary photo, and supporting_indices is a list of up to 3 0-based integer indices of supporting photos."
         )
 
         try:
             raw = self._generate([prompt])
             parsed = self._extract_json(raw)
-            selected_idx = int(parsed.get("selected_index", 0))
-            if 0 <= selected_idx < len(candidate_photos):
-                selected_photo = candidate_photos[selected_idx]
-                logger.info(
-                    "Gemini selected candidate #%d ('%s') — reasoning: %s",
-                    selected_idx,
-                    selected_photo.get("name", selected_photo["id"]),
-                    parsed.get("reasoning", "highest relevance"),
-                )
-                return selected_photo
-        except Exception as exc:
-            logger.warning("Photo selection fallback due to error: %s", exc)
+            primary_idx = int(parsed.get("primary_index", 0))
+            if not (0 <= primary_idx < len(candidate_photos)):
+                primary_idx = 0
 
-        return candidate_photos[0]
+            primary_photo = candidate_photos[primary_idx]
+            supporting_indices = parsed.get("supporting_indices", [])
+
+            supporting_photos = []
+            for s_idx in supporting_indices:
+                if (
+                    isinstance(s_idx, int)
+                    and 0 <= s_idx < len(candidate_photos)
+                    and s_idx != primary_idx
+                    and len(supporting_photos) < max_supporting
+                ):
+                    supporting_photos.append(candidate_photos[s_idx])
+
+            logger.info(
+                "Gemini selected primary photo #%d ('%s') and %d supporting photo(s) — reasoning: %s",
+                primary_idx,
+                primary_photo.get("name", primary_photo["id"]),
+                len(supporting_photos),
+                parsed.get("reasoning", "highest relevance and diversity"),
+            )
+            return {
+                "primary_photo": primary_photo,
+                "supporting_photos": supporting_photos,
+                "reasoning": parsed.get("reasoning", "highest relevance"),
+            }
+        except Exception as exc:
+            logger.warning("Photo batch selection fallback due to error: %s", exc)
+
+        return {
+            "primary_photo": candidate_photos[0],
+            "supporting_photos": candidate_photos[1:max_count],
+            "reasoning": "Fallback selection due to AI error.",
+        }
+
+    def select_best_photo(
+        self,
+        candidate_photos: list[dict[str, Any]],
+        topic_hint: str = "",
+    ) -> dict[str, Any]:
+        """Backward-compatible wrapper around select_photo_batch returning primary photo."""
+        batch = self.select_photo_batch(candidate_photos, max_count=4, topic_hint=topic_hint)
+        return batch["primary_photo"]
 
     def parse_booking_email(self, email_body: str) -> dict[str, Any]:
         """

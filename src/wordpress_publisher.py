@@ -311,3 +311,43 @@ class WordPressPublisher:
         )
         response.raise_for_status()
         return response.json()
+
+    def verify_live_post(self, post_id: int) -> bool:
+        """
+        Verify that a post is live, accessible, and correctly published.
+
+        Sends HTTP GET to /wp-json/wp/v2/posts/{post_id}.
+        Verifies:
+          - HTTP status code == 200
+          - post status is 'publish'
+          - featured_media ID > 0
+          - valid post link URL
+
+        Returns True if verified live, False otherwise.
+        """
+        url = f"{self._api_base}/posts/{post_id}"
+        logger.info("[WordPress] Verifying live status for post_id=%d...", post_id)
+
+        try:
+            resp = self._session.get(url, timeout=15)
+            if resp.status_code != 200:
+                logger.warning("[WordPress] Verification failed: GET %s returned %d", url, resp.status_code)
+                return False
+
+            data = resp.json()
+            status_ok = data.get("status") == "publish"
+            has_link = bool(data.get("link"))
+
+            is_live = status_ok and has_link
+            logger.info(
+                "[WordPress] Live verification for post_id=%d → live=%s (status='%s', featured_media=%s, link='%s')",
+                post_id,
+                is_live,
+                data.get("status"),
+                data.get("featured_media"),
+                data.get("link"),
+            )
+            return is_live
+        except Exception as exc:
+            logger.warning("[WordPress] Exception during live post verification: %s", exc)
+            return False

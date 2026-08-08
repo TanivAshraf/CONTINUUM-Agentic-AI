@@ -58,11 +58,21 @@ class ResearchLogger:
                 "wordpress": {
                     "last_published_post_id": None,
                     "total_posts_published": 0,
+                    "past_titles": [],
+                    "past_topics": [],
                 },
-                "research": {"session_count": 0},
+                "research": {
+                    "session_count": 0,
+                    "processed_file_hashes": [],
+                },
             }
         with _MEMORY_PATH.open("r", encoding="utf-8") as fh:
-            return json.load(fh)
+            mem = json.load(fh)
+
+        mem.setdefault("wordpress", {}).setdefault("past_titles", [])
+        mem.setdefault("wordpress", {}).setdefault("past_topics", [])
+        mem.setdefault("research", {}).setdefault("processed_file_hashes", [])
+        return mem
 
     def save_memory(self, memory: dict[str, Any]) -> None:
         """Persist updated system memory to disk."""
