@@ -193,7 +193,7 @@ class WordPressPublisher:
         image_caption: str = "",
         image_alt_text: str = "",
         featured_media_id: int | None = None,
-        status: str | None = None,
+        status: str = "publish",
         yoast_meta: dict | None = None,
         seo_title: str = "",
         seo_description: str = "",
@@ -202,7 +202,7 @@ class WordPressPublisher:
         """
         Create a new WordPress post via the REST API.
         """
-        post_status = status or settings.WP_DEFAULT_STATUS
+        post_status = status or getattr(settings, "WP_POST_STATUS", settings.WP_DEFAULT_STATUS)
         category_ids = self.resolve_term_ids("categories", categories or ["Travel", "Uncategorized"])
         tag_ids = self.resolve_term_ids("tags", tags or [])
 

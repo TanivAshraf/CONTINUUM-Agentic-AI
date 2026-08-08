@@ -119,6 +119,7 @@ def step_process_photos(
         tags=wp_data.get("tags", []),
         categories=wp_data.get("categories", ["Travel Stories", "AI Agent Development"]),
         featured_media_id=media_info["media_id"],
+        status=settings.WP_POST_STATUS,
         seo_title=wp_data.get("seo_title", ""),
         seo_description=wp_data.get("seo_description", ""),
         focus_keyword=wp_data.get("focus_keyword", ""),

@@ -47,7 +47,10 @@ class Settings:
     WP_USER: str = field(default_factory=lambda: _require("WP_USER"))
     WP_APP_PASSWORD: str = field(default_factory=lambda: _require("WP_APP_PASSWORD"))
     WP_DEFAULT_STATUS: str = field(
-        default_factory=lambda: _optional("WP_DEFAULT_STATUS", "draft")
+        default_factory=lambda: _optional("WP_DEFAULT_STATUS", "publish")
+    )
+    WP_POST_STATUS: str = field(
+        default_factory=lambda: _optional("WP_POST_STATUS", "publish")
     )
 
     # ── Google OAuth / Photos ─────────────────────────────────────────────────
