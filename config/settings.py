@@ -61,6 +61,12 @@ class Settings:
     GOOGLE_CLIENT_SECRET: str = field(
         default_factory=lambda: _optional("GOOGLE_CLIENT_SECRET")
     )
+    GOOGLE_PHOTOS_ALBUM_ID: str = field(
+        default_factory=lambda: _optional(
+            "GOOGLE_PHOTOS_ALBUM_ID",
+            "AF1QipNV4MW6_c9WiJ7ugxSwmnUrqWxu_ZkJdg2r5Yc0",
+        )
+    )
 
     # ── Gmail / Booking ───────────────────────────────────────────────────────
     GMAIL_REFRESH_TOKEN: str = field(
