@@ -24,6 +24,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/photoslibrary.readonly",
     "https://www.googleapis.com/auth/photoslibrary",
     "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/drive.readonly",
 ]
 
 
@@ -42,7 +43,7 @@ def update_env(key: str, value: str) -> None:
 
 def main() -> None:
     print("\n════════════════════════════════════════════════════════════")
-    print("  CONTINUUM — Google Photos OAuth Fix & Verification")
+    print("  CONTINUUM — Google OAuth Setup (Photos, Gmail, Drive)")
     print("════════════════════════════════════════════════════════════\n")
 
     if not CLIENT_SECRET_FILE.exists():
@@ -93,8 +94,8 @@ def main() -> None:
 
     print("✅ .env updated with new GOOGLE_PHOTOS_REFRESH_TOKEN and GMAIL_REFRESH_TOKEN\n")
 
-    # Immediate Test: Fetch 3 most recent photos
-    print("Testing Google Photos API access...")
+    # Immediate Test: Fetch 3 most recent image files from Google Drive API
+    print("Testing Google Drive Image Ingestion API...")
     token_res = requests.post(
         "https://oauth2.googleapis.com/token",
         data={
@@ -109,26 +110,32 @@ def main() -> None:
         sys.exit(1)
 
     access_token = token_res.json()["access_token"]
-    photos_res = requests.get(
-        "https://photoslibrary.googleapis.com/v1/mediaItems?pageSize=3",
+    drive_res = requests.get(
+        "https://www.googleapis.com/drive/v3/files",
         headers={"Authorization": f"Bearer {access_token}"},
+        params={
+            "q": "mimeType contains 'image/' and trashed = false",
+            "orderBy": "createdTime desc",
+            "pageSize": 3,
+            "fields": "files(id, name, mimeType, createdTime)",
+        },
     )
 
-    print(f"Photos API Status Code: {photos_res.status_code}")
-    if photos_res.status_code == 200:
-        data = photos_res.json()
-        items = data.get("mediaItems", [])
-        print(f"✅ Successfully retrieved {len(items)} media items:\n")
+    print(f"Drive API Status Code: {drive_res.status_code}")
+    if drive_res.status_code == 200:
+        data = drive_res.json()
+        items = data.get("files", [])
+        print(f"✅ Successfully retrieved {len(items)} image files from Google Drive:\n")
         for i, item in enumerate(items, 1):
-            filename = item.get("filename", "unknown")
-            creation_time = item.get("mediaMetadata", {}).get("creationTime", "unknown")
+            filename = item.get("name", "unknown")
+            creation_time = item.get("createdTime", "unknown")
             item_id = item.get("id", "")
             print(f"  {i}. Filename: {filename}")
             print(f"     Creation Time: {creation_time}")
-            print(f"     ID: {item_id[:20]}...\n")
+            print(f"     File ID: {item_id[:20]}...\n")
     else:
         print("Response Body:")
-        print(photos_res.text)
+        print(drive_res.text)
 
     print("════════════════════════════════════════════════════════════\n")
 

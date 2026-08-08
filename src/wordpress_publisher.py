@@ -195,6 +195,9 @@ class WordPressPublisher:
         featured_media_id: int | None = None,
         status: str | None = None,
         yoast_meta: dict | None = None,
+        seo_title: str = "",
+        seo_description: str = "",
+        focus_keyword: str = "",
     ) -> dict[str, Any]:
         """
         Create a new WordPress post via the REST API.
@@ -246,8 +249,31 @@ class WordPressPublisher:
         if featured_media_id:
             payload["featured_media"] = featured_media_id
 
+        # Build SEO meta payload (compatible with both Yoast SEO and RankMath)
+        seo_meta: dict[str, str] = {}
+
         if yoast_meta:
-            payload["yoast_head_json"] = yoast_meta
+            seo_meta.update(yoast_meta)
+
+        if seo_title:
+            seo_meta["yoast_wpseo_title"] = seo_title
+            seo_meta["rank_math_title"] = seo_title
+
+        if seo_description:
+            seo_meta["yoast_wpseo_metadesc"] = seo_description
+            seo_meta["rank_math_description"] = seo_description
+
+        if focus_keyword:
+            seo_meta["yoast_wpseo_focuskw"] = focus_keyword
+            seo_meta["rank_math_focus_keyword"] = focus_keyword
+
+        if seo_meta:
+            payload["meta"] = seo_meta
+            logger.info(
+                "[WordPress] SEO meta injected — title='%s' | keyword='%s'",
+                seo_title or "(from yoast_meta)",
+                focus_keyword,
+            )
 
         logger.info(
             "Creating post '%s' (status='%s', %d tag(s), %d category(s), featured_media=%s)",

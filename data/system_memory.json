@@ -2,26 +2,26 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": null
+    "last_updated": "2026-08-08T17:17:00.020057+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": null,
-    "last_processed_timestamp": null,
+    "last_processed_media_item_id": "ANqjti6xi_wx09WXqFHua6NHSQmLS9V4v2NlCil0tAaKJVtIU07Us3xqBzctCG-G2ONIamBu3mBbQZ4XnsmawrtF-UBY9ZpNkA",
+    "last_processed_timestamp": "2026-08-08T17:16:59.079983+00:00",
     "total_items_processed": 0
   },
   "gmail": {
-    "last_processed_message_id": null,
-    "last_processed_timestamp": null,
-    "total_messages_processed": 0
+    "last_processed_message_id": "19fcc98ad984a7c1",
+    "last_processed_timestamp": "2026-08-05T20:12:27.989990+00:00",
+    "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": null,
+    "last_published_post_id": 1059,
     "last_published_timestamp": null,
-    "total_posts_published": 0,
+    "total_posts_published": 6,
     "draft_queue": []
   },
   "research": {
-    "session_count": 0,
+    "session_count": 26,
     "last_session_timestamp": null
   }
 }

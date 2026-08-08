@@ -39,6 +39,9 @@ class ResearchLogger:
 
     def __init__(self) -> None:
         _LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        gitkeep_file = _LOGS_DIR / ".gitkeep"
+        if not gitkeep_file.exists():
+            gitkeep_file.touch()
         _MEMORY_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     # ── System Memory ─────────────────────────────────────────────────────────

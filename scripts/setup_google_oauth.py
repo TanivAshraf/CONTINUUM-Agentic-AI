@@ -31,9 +31,15 @@ CLIENT_SECRET_FILE = ROOT / "client_secret.json"
 
 # ── Required OAuth scopes ─────────────────────────────────────────────────────
 SCOPES = [
+    # Google Photos Library API (requires API enabled in Cloud Console)
     "https://www.googleapis.com/auth/photoslibrary.readonly",
     "https://www.googleapis.com/auth/photoslibrary",
+    # Google Photos Picker API (session-based, no app verification required)
+    "https://www.googleapis.com/auth/photospicker.mediaitems.readonly",
+    # Gmail (booking parsing)
     "https://www.googleapis.com/auth/gmail.readonly",
+    # Drive (fallback image source)
+    "https://www.googleapis.com/auth/drive.readonly",
 ]
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -62,6 +68,8 @@ def _print_instructions() -> None:
     print("  3. Enable the required APIs:")
     print("     • Photos Library API:")
     print("       https://console.cloud.google.com/apis/library/photoslibrary.googleapis.com")
+    print("     • Photos Picker API (no verification required):")
+    print("       https://console.cloud.google.com/apis/library/photospicker.googleapis.com")
     print("     • Gmail API:")
     print("       https://console.cloud.google.com/apis/library/gmail.googleapis.com")
     print()

@@ -70,8 +70,12 @@ associated metadata, produce a publication-ready WordPress blog post:
   - Structure with <h2> subheadings every 150–200 words.
   - Append a "Key Takeaways" <ul> section at the end.
   - Embed a Yoast-compatible SEO focus keyphrase suggestion.
+  - Generate full SEO meta tags:
+      seo_title: Catchy, search-optimised meta title under 60 characters.
+      seo_description: Compelling meta description 140-160 characters containing the focus keyword.
+      focus_keyword: Primary SEO keyword for this post.
   - Return JSON with keys: html_content, excerpt, yoast_keyphrase, tags (list),
-    categories (list), featured_image_alt_text.
+    categories (list), featured_image_alt_text, seo_title, seo_description, focus_keyword.
 """
 
 WP_FORMATTER_USER = """
