@@ -263,10 +263,11 @@ class GeminiBrain:
         max_supporting = max(0, max_count - 1)
         prompt = (
             "You are an expert AI photo editor selecting a batch of photos for a blog post.\n"
-            "CRITICAL REQUIREMENTS:\n"
-            "1. Always select real-world camera photographs (scenery, street views, travel spots, food, cultural landmarks, camera photos).\n"
-            "2. REJECT software screenshots, UI dashboards, web browser captures, system diagrams, or near-duplicate shots of the exact same subject.\n"
-            f"3. Select 1 PRIMARY PHOTO (best overall shot for featured image) and up to {max_supporting} DISTINCT SUPPORTING PHOTOS for the body story.\n\n"
+            "CONTENT APPROVAL RULES:\n"
+            "1. APPROVED CONTENT: Camera photographs AND travel-related app screenshots (train e-tickets, 12306 / Trip.com bookings, subway maps, flight confirmations).\n"
+            "2. REJECTED CONTENT ONLY: Private financial or identity documents (tax returns, bank statements, credit card numbers, passport bio page scans, NID cards).\n"
+            "3. REJECT near-duplicate shots of the exact same subject.\n"
+            f"4. Select 1 PRIMARY PHOTO (best overall visual for featured image) and up to {max_supporting} DISTINCT SUPPORTING PHOTOS for the body story.\n\n"
             f"Topic Context: {topic_hint or 'Life logging, tech devlog, travel, digital nomad'}\n\n"
             "Candidate Photos:\n"
             f"{json.dumps(candidates_summary, indent=2)}\n\n"

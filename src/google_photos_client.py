@@ -7,14 +7,16 @@ Connects to Google Drive v3 API with folder-level locking to strictly target the
 "China Photos" folder.
 
 PRIVACY & SAFETY HARD LOCK:
-  - Queries ONLY files inside the "China Photos" folder:
-      q="'{folder_id}' in parents and mimeType contains 'image/' and trashed = false and not name contains 'Screenshot' and not name contains 'tax' and not name contains 'receipt'"
-  - Root drive files, tax documents, receipts, and personal files outside this folder are strictly inaccessible.
+  - Queries ONLY image files inside the "China Photos" folder:
+      q="'{folder_id}' in parents and mimeType contains 'image/' and trashed = false"
+  - Ingests ALL images (camera photos & travel app screenshots like e-tickets/maps) without filename string filtering.
+  - Root drive files outside this folder are strictly inaccessible.
   - Pure headless execution — completes in under 3 seconds with zero interactive prompts, polling loops, or popups.
 """
 
 from __future__ import annotations
 
+import hashlib
 import logging
 from typing import Generator
 
@@ -38,6 +40,11 @@ class GooglePhotosClient:
     def __init__(self) -> None:
         self._service = None
         self._folder_id: str | None = None
+
+    @staticmethod
+    def calculate_image_hash(image_bytes: bytes) -> str:
+        """Calculate SHA-256 byte checksum of raw image data."""
+        return hashlib.sha256(image_bytes).hexdigest()
 
     def _get_service(self):
         """Build and cache authorized Google Drive API service."""
@@ -113,7 +120,7 @@ class GooglePhotosClient:
         """
         Yield recent image files strictly inside the 'China Photos' folder in reverse-chronological order.
 
-        HARD PRIVACY LOCK: Root drive files, tax receipts, and personal files are never queried.
+        HARD PRIVACY LOCK: Root drive files are never queried.
 
         STRICT DEDUPLICATION: Any file ID present in processed_ids is immediately skipped —
         even if it has not been seen as since_item_id. This ensures cloud CI runs never
@@ -145,10 +152,7 @@ class GooglePhotosClient:
         query = (
             f"'{folder_id}' in parents "
             f"and mimeType contains 'image/' "
-            f"and trashed = false "
-            f"and not name contains 'Screenshot' "
-            f"and not name contains 'tax' "
-            f"and not name contains 'receipt'"
+            f"and trashed = false"
         )
 
         logger.info("[GooglePhotos] Ingesting photos strictly from folder_id=%s...", folder_id)
@@ -176,11 +180,6 @@ class GooglePhotosClient:
             for file_item in files:
                 file_id = file_item["id"]
                 fname = file_item.get("name", "").lower()
-
-                # Additional safeguard filters against screenshots, tax, receipts
-                if any(x in fname for x in ("screenshot", "screen_shot", "screen", "capture", "tax", "receipt")):
-                    logger.info("[GooglePhotos] Skipping filtered file: %s", fname)
-                    continue
 
                 if since_item_id and file_id == since_item_id:
                     logger.info("[GooglePhotos] Reached last processed image %s — stopping.", since_item_id)

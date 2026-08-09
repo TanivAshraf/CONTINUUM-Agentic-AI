@@ -18,6 +18,7 @@ Run via CI:        GitHub Actions calls this file on schedule
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import logging
 import sys
@@ -75,12 +76,13 @@ def step_process_photos(
     console.rule("[bold cyan]📸 Step 1: Photo Processing")
 
     last_id = memory.get("google_photos", {}).get("last_processed_media_item_id")
-    processed_ids = memory.get("research", {}).get("processed_file_hashes", [])
+    processed_hashes = set(memory.get("research", {}).get("processed_file_hashes", []))
+
     new_items = list(
         photos.list_recent_media_items(
             page_size=10,
             since_item_id=last_id,
-            processed_ids=processed_ids,
+            processed_ids=list(processed_hashes),
         )
     )
 
@@ -88,11 +90,43 @@ def step_process_photos(
         logger.info("No new photos to process.")
         return memory
 
-    logger.info("Found %d new media item(s) to process.", len(new_items))
+    logger.info("Found %d candidate media item(s). Verifying byte checksums...", len(new_items))
+
+    unprocessed_items = []
+    bytes_cache: dict[str, tuple[bytes, str]] = {}
+
+    for item in new_items:
+        file_id = item["id"]
+        fname = item.get("name", "photo.jpg")
+
+        if file_id in processed_hashes:
+            logger.info("[Deduplication] Skipping file ID %s (%s) — already processed.", file_id, fname)
+            continue
+
+        img_bytes = photos.download_image_bytes(item["baseUrl"])
+        img_checksum = hashlib.sha256(img_bytes).hexdigest()
+
+        if img_checksum in processed_hashes:
+            logger.info(
+                "[Deduplication] Skipping photo '%s' (ID %s) — SHA-256 byte checksum %s already processed.",
+                fname,
+                file_id,
+                img_checksum[:12],
+            )
+            continue
+
+        unprocessed_items.append(item)
+        bytes_cache[file_id] = (img_bytes, img_checksum)
+
+    if not unprocessed_items:
+        logger.info("No new unprocessed photos found after byte checksum deduplication.")
+        return memory
+
+    logger.info("Found %d unprocessed photo(s) after byte checksum deduplication.", len(unprocessed_items))
 
     # 1. AI-Driven Batch Photo Selection (Primary + Supporting)
     batch = brain.select_photo_batch(
-        candidate_photos=new_items,
+        candidate_photos=unprocessed_items,
         max_count=4,
         topic_hint="CONTINUUM Agentic AI Architecture, Life Logging, Tech DevLog, Travel, China Trip",
     )
@@ -104,9 +138,23 @@ def step_process_photos(
     raw_creation_time = primary_item.get("mediaMetadata", {}).get("creationTime", "")
     capture_date_shanghai = _format_shanghai_time(raw_creation_time) if raw_creation_time else "recent"
 
-    # 3. Download image bytes for primary and supporting photos
-    primary_bytes = photos.download_image_bytes(primary_item["baseUrl"])
-    supporting_bytes_list = [photos.download_image_bytes(item["baseUrl"]) for item in supporting_items]
+    # 3. Retrieve pre-downloaded image bytes & checksums from bytes_cache
+    primary_bytes, primary_checksum = bytes_cache.get(
+        primary_item["id"],
+        (photos.download_image_bytes(primary_item["baseUrl"]), hashlib.sha256(photos.download_image_bytes(primary_item["baseUrl"])).hexdigest()),
+    )
+
+    supporting_bytes_list = []
+    supporting_checksums = []
+    for s_item in supporting_items:
+        if s_item["id"] in bytes_cache:
+            s_b, s_c = bytes_cache[s_item["id"]]
+        else:
+            s_b = photos.download_image_bytes(s_item["baseUrl"])
+            s_c = hashlib.sha256(s_b).hexdigest()
+        supporting_bytes_list.append(s_b)
+        supporting_checksums.append(s_c)
+
     all_image_bytes = [primary_bytes] + supporting_bytes_list
 
     # 4. Multimodal Analysis with Semantic Deduplication
@@ -215,9 +263,14 @@ def step_process_photos(
             past_topics_list.append(tag)
 
     hashes_list = memory.setdefault("research", {}).setdefault("processed_file_hashes", [])
-    for item in [primary_item] + supporting_items:
-        if item["id"] not in hashes_list:
-            hashes_list.append(item["id"])
+    all_processed = [(primary_item["id"], primary_checksum)] + list(
+        zip([s["id"] for s in supporting_items], supporting_checksums)
+    )
+    for item_id, checksum in all_processed:
+        if checksum not in hashes_list:
+            hashes_list.append(checksum)
+        if item_id not in hashes_list:
+            hashes_list.append(item_id)
 
     console.print(
         f"[bold green]✅ Published & Verified Live:[/bold green] {analysis['title']} → {post.get('link')}"
