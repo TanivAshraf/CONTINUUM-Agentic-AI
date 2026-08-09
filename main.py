@@ -188,17 +188,18 @@ def step_process_photos(
     # 6. Upload Supporting Photos and build Gutenberg figure blocks
     gutenberg_figures_html = ""
     for idx, (s_item, s_bytes) in enumerate(zip(supporting_items, supporting_bytes_list)):
+        s_alt = f"{analysis['title']} - Photo {idx+2}"
+        s_caption = f"Supporting view from {analysis.get('detected_location', 'China trip')}"
         s_media = publisher.upload_media(
             image_bytes=s_bytes,
             filename=f"continuum_supp_{s_item['id'][:8]}.jpg",
-            alt_text=f"{analysis['title']} - Photo {idx+2}",
-            caption=f"Supporting view from {analysis.get('detected_location', 'China trip')}",
+            alt_text=s_alt,
+            caption=s_caption,
         )
-        s_caption = s_media.get("caption", f"Supporting visual #{idx+1}")
         gutenberg_figures_html += (
             f'<!-- wp:image {{"id":{s_media["media_id"]},"sizeSlug":"full","linkDestination":"none"}} -->\n'
             f'<figure class="wp-block-image size-full">'
-            f'<img src="{s_media["source_url"]}" alt="{s_media["alt_text"]}" class="wp-image-{s_media["media_id"]}"/>'
+            f'<img src="{s_media["source_url"]}" alt="{s_alt}" class="wp-image-{s_media["media_id"]}"/>'
             f'<figcaption>{s_caption}</figcaption>'
             f'</figure>\n'
             f'<!-- /wp:image -->\n\n'
