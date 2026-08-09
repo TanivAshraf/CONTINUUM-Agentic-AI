@@ -71,9 +71,30 @@ class WordPressPublisher:
             timeout=60,
         )
         response.raise_for_status()
-        data = response.json()
-        media_id: int = data["id"]
-        source_url: str = data.get("source_url", "")
+
+        media_id: int = 0
+        source_url: str = ""
+
+        try:
+            if not response.text.strip():
+                raise ValueError("Empty response body")
+            data = response.json()
+            if isinstance(data, dict) and "id" in data:
+                media_id = int(data["id"])
+                source_url = str(data.get("source_url", ""))
+            else:
+                raise ValueError("Missing 'id' in response dict")
+        except (requests.exceptions.JSONDecodeError, ValueError, KeyError, TypeError) as exc:
+            logger.warning(
+                "[WordPress] Media upload returned non-JSON response body. Raw text: %s",
+                response.text[:200],
+            )
+            location_hdr = response.headers.get("Location") or response.headers.get("location", "")
+            if location_hdr:
+                try:
+                    media_id = int(location_hdr.rstrip("/").split("/")[-1])
+                except (ValueError, IndexError):
+                    pass
 
         # Update metadata if alt_text or caption provided
         update_fields = {}
@@ -82,7 +103,7 @@ class WordPressPublisher:
         if caption:
             update_fields["caption"] = caption
 
-        if update_fields:
+        if update_fields and media_id > 0:
             try:
                 self._session.post(
                     f"{self._api_base}/media/{media_id}",
