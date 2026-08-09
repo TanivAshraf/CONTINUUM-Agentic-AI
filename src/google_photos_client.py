@@ -108,15 +108,21 @@ class GooglePhotosClient:
         self,
         page_size: int = 10,
         since_item_id: str | None = None,
+        processed_ids: list | None = None,
     ) -> Generator[dict, None, None]:
         """
         Yield recent image files strictly inside the 'China Photos' folder in reverse-chronological order.
 
         HARD PRIVACY LOCK: Root drive files, tax receipts, and personal files are never queried.
 
+        STRICT DEDUPLICATION: Any file ID present in processed_ids is immediately skipped —
+        even if it has not been seen as since_item_id. This ensures cloud CI runs never
+        re-process photos whose state was persisted across runs.
+
         Args:
             page_size: Number of items to return max.
-            since_item_id: Stop iteration when this file ID is encountered.
+            since_item_id: Stop iteration when this file ID is encountered (cursor-based).
+            processed_ids: Flat list of already-processed file IDs loaded from system_memory.json.
 
         Yields:
             Standardised media-item dict compatible with CONTINUUM pipeline.
@@ -125,6 +131,10 @@ class GooglePhotosClient:
         if not folder_id:
             logger.warning("[GooglePhotos] Skipping ingestion — 'China Photos' folder ID not available.")
             return
+
+        _processed_set: set[str] = set(processed_ids) if processed_ids else set()
+        if _processed_set:
+            logger.info("[GooglePhotos] Deduplication active — %d already-processed IDs loaded.", len(_processed_set))
 
         try:
             service = self._get_service()
@@ -175,6 +185,11 @@ class GooglePhotosClient:
                 if since_item_id and file_id == since_item_id:
                     logger.info("[GooglePhotos] Reached last processed image %s — stopping.", since_item_id)
                     return
+
+                # STRICT DEDUPLICATION: skip any ID already recorded in memory
+                if file_id in _processed_set:
+                    logger.info("[GooglePhotos] Skipping already-processed file ID: %s (%s)", file_id, fname)
+                    continue
 
                 creation_time = file_item.get("createdTime", "")
 

@@ -75,8 +75,13 @@ def step_process_photos(
     console.rule("[bold cyan]📸 Step 1: Photo Processing")
 
     last_id = memory.get("google_photos", {}).get("last_processed_media_item_id")
+    processed_ids = memory.get("research", {}).get("processed_file_hashes", [])
     new_items = list(
-        photos.list_recent_media_items(page_size=10, since_item_id=last_id)
+        photos.list_recent_media_items(
+            page_size=10,
+            since_item_id=last_id,
+            processed_ids=processed_ids,
+        )
     )
 
     if not new_items:
@@ -121,6 +126,7 @@ def step_process_photos(
         title=analysis["title"],
         narrative=analysis["narrative"],
         tags=analysis.get("tags", []),
+        past_topics=past_topics + past_titles,
     )
 
     # 5. Upload Primary Photo (Featured Media)

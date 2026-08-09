@@ -93,8 +93,8 @@ class GeminiBrain:
 
     @retry(
         retry=retry_if_exception_type(Exception),
-        wait=wait_exponential(multiplier=1, min=1, max=10),
-        stop=stop_after_attempt(2),
+        wait=wait_exponential(multiplier=2, min=2, max=30),
+        stop=stop_after_attempt(3),
         reraise=True,
     )
     def _call_model_with_retry(self, model_name: str, contents: list) -> str:
@@ -125,18 +125,22 @@ class GeminiBrain:
                 should_failover = (
                     "429" in err_msg
                     or "404" in err_msg
+                    or "503" in err_msg
+                    or "UNAVAILABLE" in err_msg
                     or "RESOURCE_EXHAUSTED" in err_msg
                     or "Quota" in err_msg
                     or "quota" in err_msg
                     or "not found" in err_msg
+                    or "high demand" in err_msg
                 )
                 if should_failover:
                     next_idx = idx + 1
                     if next_idx < len(self.candidate_models):
                         next_model = self.candidate_models[next_idx]
                         logger.warning(
-                            "[GeminiBrain] Rate limit (429) hit on model '%s'. Failing over to next model...",
+                            "[GeminiBrain] Transient error (429/503) on model '%s' → failing over to '%s'...",
                             current_model,
+                            next_model,
                         )
                         last_exception = exc
                         continue
@@ -191,15 +195,10 @@ class GeminiBrain:
             "Analysing %d image(s) captured on %s", len(image_bytes_list), capture_date
         )
 
-        dedup_rule = ""
-        if past_topics:
-            dedup_rule = (
-                f"\n\nSYSTEM RULE: Ensure the story angle is 100% unique. "
-                f"DO NOT repeat topics or narrative themes from past posts: {', '.join(past_topics[:10])}"
-            )
+        dedup_topics_str = ", ".join(past_topics[:15]) if past_topics else "None yet."
 
         # Build multimodal content list: [system text, images..., user text]
-        contents: list = [PHOTO_ANALYSIS_SYSTEM + dedup_rule]
+        contents: list = [PHOTO_ANALYSIS_SYSTEM]
         for img_bytes in image_bytes_list:
             contents.append(
                 genai_types.Part.from_bytes(data=img_bytes, mime_type="image/jpeg")
@@ -209,6 +208,7 @@ class GeminiBrain:
                 n_images=len(image_bytes_list),
                 capture_date=capture_date,
                 memory_context=memory_context or "No prior context.",
+                past_topics=dedup_topics_str,
             )
         )
 
@@ -353,7 +353,8 @@ class GeminiBrain:
         narrative: str,
         tags: list[str],
         target_audience: str = "general travel readers",
-        tone: str = "warm, personal, and inspiring",
+        tone: str = "confident, specific, and practically useful",
+        past_topics: list[str] | None = None,
     ) -> dict[str, Any]:
         """
         Format a narrative draft into a publication-ready WordPress post.
@@ -364,11 +365,13 @@ class GeminiBrain:
             tags: List of tags for the post.
             target_audience: Description of the target reader.
             tone: Desired writing tone.
+            past_topics: List of past post topics/titles for semantic deduplication.
 
         Returns:
             Parsed JSON dict with html_content, excerpt, yoast_keyphrase, etc.
         """
         logger.info("Formatting WordPress post: '%s'", title)
+        dedup_topics_str = ", ".join(past_topics[:15]) if past_topics else "None yet."
         contents = [
             WP_FORMATTER_SYSTEM,
             WP_FORMATTER_USER.format(
@@ -377,6 +380,7 @@ class GeminiBrain:
                 tags=", ".join(tags),
                 target_audience=target_audience,
                 tone=tone,
+                past_topics=dedup_topics_str,
             ),
         ]
         raw = self._generate(contents)
