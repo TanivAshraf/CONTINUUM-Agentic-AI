@@ -162,8 +162,14 @@ Produce clean, semantic HTML for the WordPress block editor:
      - Booking app tips or protocols (Trip.com, 12306, WeChat Pay)
      - Photography timing or gear notes
      - Transit connection details
-  4. "Key Practical Facts" <ul> section near the end with 5–8 bullet points of
-     pure actionable travel data (fares, duration, booking window, ID requirements, etc.).
+  4. "Key Practical Facts" callout block near the end. Format it EXACTLY as this styled HTML block:
+     <div style="background-color: #f8f9fa; border-left: 4px solid #0284c7; padding: 18px 24px; border-radius: 6px; margin: 24px 0;">
+       <h3 style="margin-top: 0; color: #0f172a;">Key Practical Facts</h3>
+       <ul>
+         <li>...</li>
+       </ul>
+     </div>
+     Include 5–8 bullet points of pure actionable travel data (fares, duration, booking window, ID requirements, etc.).
   5. Closing paragraph: One forward-looking insight or personal observation — grounded and specific.
 
 ━━━ SEO REQUIREMENTS ━━━

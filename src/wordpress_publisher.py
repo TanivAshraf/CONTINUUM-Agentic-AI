@@ -133,11 +133,15 @@ class WordPressPublisher:
         Resolve Category and Tag names to WordPress integer term IDs.
 
         Steps:
-          1. Fetch existing terms via GET /wp-json/wp/v2/{taxonomy}?per_page=100.
-          2. Build mapping of lowercase_name -> term_id.
-          3. For any name not found, attempt POST /wp-json/wp/v2/{taxonomy} {"name": name}.
-          4. Returns a list of integer term IDs.
+          1. Strip banned tag names before any API calls.
+          2. Fetch existing terms via GET /wp-json/wp/v2/{taxonomy}?per_page=100.
+          3. Build mapping of lowercase_name -> term_id.
+          4. For any name not found, attempt POST /wp-json/wp/v2/{taxonomy} {"name": name}.
+          5. Returns a list of integer term IDs.
         """
+        BANNED_TAGS = {"adulting", "adult", "lifestyle", "uncategorized"}
+        names = [t for t in names if t.strip() and t.strip().lower() not in BANNED_TAGS]
+
         term_map: dict[str, int] = {}
         try:
             resp = self._session.get(
@@ -246,16 +250,16 @@ class WordPressPublisher:
             featured_media_id = media_info["media_id"]
             source_url = media_info["source_url"]
 
-            caption_html = (
-                f"<figcaption>{image_caption}</figcaption>"
-                if image_caption
-                else f"<figcaption>{title}</figcaption>"
-            )
+            caption_text = image_caption if image_caption else title
             figure_html = (
-                f'<figure class="wp-block-image">'
-                f'<img src="{source_url}" alt="{image_alt_text or title}" />'
-                f"{caption_html}"
-                f"</figure>\n\n"
+                f'<figure class="wp-block-image size-large" '
+                f'style="max-width: 480px; margin: 24px auto; text-align: center;">'
+                f'<img src="{source_url}" alt="{image_alt_text or title}" '
+                f'style="width: 100%; max-width: 480px; height: auto; border-radius: 8px; '
+                f'box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />'
+                f'<figcaption style="font-size: 0.88em; color: #555; margin-top: 8px; font-style: italic;">'
+                f'{caption_text}</figcaption>'
+                f'</figure>\n\n'
             )
             final_content = figure_html + html_content
 
