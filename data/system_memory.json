@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-10T12:57:13.374539+00:00"
+    "last_updated": "2026-08-10T18:48:48.613452+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "19ml3eDbMEQfv6ZrNhL1nyjEZvhD9d6Of",
-    "last_processed_timestamp": "2026-08-10T03:28:32.322871+08:00",
+    "last_processed_media_item_id": "14f-4Utf69100gXdi-J_b71UaLBcKr0j1",
+    "last_processed_timestamp": "2026-08-11T02:48:48.612313+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,13 +15,14 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1076,
+    "last_published_post_id": 1085,
     "last_published_timestamp": null,
-    "total_posts_published": 9,
+    "total_posts_published": 10,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
-      "Logistics Guide: Planning a 14-Day Multi-City China Circuit"
+      "Logistics Guide: Planning a 14-Day Multi-City China Circuit",
+      "Digital Navigation and Route Planning in Beijing and Chongqing"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -42,11 +43,19 @@
       "Chongqing Jiefangbei",
       "Shanghai People's Square",
       "China Passport Authentication",
-      "Digital China Travel"
+      "Digital China Travel",
+      "Beijing Dongsi",
+      "Amap Navigation",
+      "Beijing Street Food",
+      "Lvdagun",
+      "Chongqing Route Planning",
+      "Yuzhong District",
+      "Yangtze River Cableway",
+      "Chongqing Metro Line 2"
     ]
   },
   "research": {
-    "session_count": 38,
+    "session_count": 39,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -57,7 +66,13 @@
       "f77520181f9490bd5c0b93157e62c2e11f01771bbaf4ae27ec3fc519189e9d6b",
       "1Ytlo6tIjWJQauwobc1wund3w_BkDkkCc",
       "1294ba967ce7971c4c2b07fb479155623cad1945551548aaa7c31a9815a0c4b9",
-      "1vOcjTAyFs202AxLlm0V1B2GXA1BZJtLm"
+      "1vOcjTAyFs202AxLlm0V1B2GXA1BZJtLm",
+      "c4e84c41ee01438489747b33688c3338522b9a9e7342006c1d76ee8d6a3d46f4",
+      "14f-4Utf69100gXdi-J_b71UaLBcKr0j1",
+      "ad22b2e31f62e5b2d8b458b35af23e178951b34f77c9d08e4c5eb51e3792d476",
+      "1oGDz4tUFY1g5idm8wB1w9LBTLXiZWZeB",
+      "fe54528ca1d676701c4077d22f212b104495755e1e4abd8267b0e8e20fba3023",
+      "1mzTo93T09jETpOc3F-MU-pkzToxwQ2Go"
     ]
   }
 }
