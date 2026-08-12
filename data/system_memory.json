@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-12T07:17:54.254734+00:00"
+    "last_updated": "2026-08-12T13:00:29.478432+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "10Q_ru2T3yRJOpfsDzz5IjNFe2WqfpAFD",
-    "last_processed_timestamp": "2026-08-12T09:28:11.557556+08:00",
+    "last_processed_media_item_id": "1YRyb97zWftt7SmUDPFKCPDgoSMrts3N1",
+    "last_processed_timestamp": "2026-08-12T21:00:29.477008+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,15 +15,16 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1088,
+    "last_published_post_id": 1093,
     "last_published_timestamp": null,
-    "total_posts_published": 11,
+    "total_posts_published": 12,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
       "Logistics Guide: Planning a 14-Day Multi-City China Circuit",
       "Digital Navigation and Route Planning in Beijing and Chongqing",
-      "Navigating Intramuros: Manila Logistics and Historic Routes"
+      "Navigating Intramuros: Manila Logistics and Historic Routes",
+      "WeChat Pay and Alipay Foreign Card Linking Guide for China"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -60,11 +61,18 @@
       "Fort Santiago",
       "Metro Manila Transport",
       "Philippines Travel Logistics",
-      "General Luna Street"
+      "General Luna Street",
+      "WeChat Pay International",
+      "Alipay Foreign Card",
+      "China Mobile Payments",
+      "TourCard UnionPay",
+      "China Cashless Travel",
+      "Tenpay Foreign Visa",
+      "Passport Real Name Verification"
     ]
   },
   "research": {
-    "session_count": 46,
+    "session_count": 47,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -85,7 +93,15 @@
       "1e9b8c999c276f0c4c9e934032876ead4e8e45a17c25614750efdfa287ad69f6",
       "10Q_ru2T3yRJOpfsDzz5IjNFe2WqfpAFD",
       "45504b424cb87130e08e567fa67613e36fe40d3d14e7a058ccfe840adf8993c3",
-      "1Dm-QmhcNPZ3r67ba8-8FtxJ6Yxu3xZz8"
+      "1Dm-QmhcNPZ3r67ba8-8FtxJ6Yxu3xZz8",
+      "f119cf266a54f0cacddc9628fc275a2266f4bcb95af74c5ba14feb306e42e3e6",
+      "1YRyb97zWftt7SmUDPFKCPDgoSMrts3N1",
+      "d8b74942fdfd840937b192b52f2b3541a7dc516cd96d7de1d0f4474eb3cf5f23",
+      "1h48Drp-R_MN-eaZv9oul0K_H86KJCk0_",
+      "ccb99bfc1ec8f18c5dff9fdda3a2e28dce0739f58cadd22369a82de78e0d43a7",
+      "1gylxTw61fRd3Tf86fNQ8GMuBq6ro7P_B",
+      "ff409ca0400700bf6bd8a265f7c68d280bf02e3525a05f5e41e003b9c696634c",
+      "1XPqAn157VACcEuFx33Wt7ZgJ0DRfsOFT"
     ]
   }
 }
