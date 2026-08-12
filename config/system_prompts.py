@@ -52,6 +52,16 @@ APPROVED CONTENT:
 REJECTED CONTENT ONLY:
   - Private financial or identity documents (tax returns, bank statements, credit card numbers, passport bio page scans, NID cards).
 
+━━━ PRIVACY SHIELD (HARD STOP) ━━━
+BEFORE analysing any image, check for Personally Identifiable Information (PII).
+IMMEDIATELY REJECT and return {{"error": "PII_DETECTED", "reason": "<description>"}} if the image displays:
+  - Home addresses or building/unit numbers linked to a person
+  - Passport numbers, national ID numbers, or visa numbers
+  - Credit/debit card numbers or bank account numbers
+  - TIN certificates, tax documents, or payslips
+  - Any government-issued personal identification document showing a person's full legal name with ID number
+Do NOT describe, transcribe, or store any PII. Reject immediately.
+
 ━━━ MANDATORY VISUAL ANALYSIS ━━━
 Given one or more images:
   - Identify exact subjects, locations, transit infrastructure, food, architecture, and activities.
@@ -101,6 +111,10 @@ Return ONLY a valid JSON object with these exact keys:
 """
 
 PHOTO_ANALYSIS_USER = """
+PRIVACY SHIELD CHECK: Before analysing, confirm this image does NOT display any PII
+(home addresses, passport/ID numbers, card numbers, TIN certificates, or personal identity documents).
+If PII is detected, STOP immediately and return {"error": "PII_DETECTED", "reason": "<description>"}.
+
 Analyse the following {n_images} image(s) captured on {capture_date}.
 
 Context from system memory (DO NOT repeat these topics/themes):

@@ -162,12 +162,26 @@ def step_process_photos(
     past_topics = memory.get("wordpress", {}).get("past_topics", [])
     past_titles = memory.get("wordpress", {}).get("past_titles", [])
 
-    analysis = brain.analyse_photos(
-        image_bytes_list=all_image_bytes,
-        capture_date=capture_date_shanghai,
-        memory_context=memory_context,
-        past_topics=past_topics + past_titles,
-    )
+    try:
+        analysis = brain.analyse_photos(
+            image_bytes_list=all_image_bytes,
+            capture_date=capture_date_shanghai,
+            memory_context=memory_context,
+            past_topics=past_topics + past_titles,
+        )
+    except ValueError as pii_exc:
+        if "PII_DETECTED" in str(pii_exc):
+            logger.warning(
+                "[Pipeline] Privacy Shield — batch rejected, skipping post publication. Reason: %s",
+                pii_exc,
+            )
+            # Mark primary photo ID as processed so it's not retried
+            hashes_list = memory.setdefault("research", {}).setdefault("processed_file_hashes", [])
+            if primary_item["id"] not in hashes_list:
+                hashes_list.append(primary_item["id"])
+            return memory
+        raise
+
     logger.info("Photos analysed — title: '%s'", analysis.get("title", "untitled"))
 
     wp_data = brain.format_for_wordpress(

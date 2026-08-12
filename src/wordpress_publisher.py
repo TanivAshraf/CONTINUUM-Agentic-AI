@@ -82,6 +82,7 @@ class WordPressPublisher:
             if isinstance(data, dict) and "id" in data:
                 media_id = int(data["id"])
                 source_url = str(data.get("source_url", ""))
+                sizes = data.get("media_details", {}).get("sizes", {})
             else:
                 raise ValueError("Missing 'id' in response dict")
         except (requests.exceptions.JSONDecodeError, ValueError, KeyError, TypeError) as exc:
@@ -89,6 +90,7 @@ class WordPressPublisher:
                 "[WordPress] Media upload returned non-JSON response body. Raw text: %s",
                 response.text[:200],
             )
+            sizes = {}
             location_hdr = response.headers.get("Location") or response.headers.get("location", "")
             if location_hdr:
                 try:
@@ -114,7 +116,7 @@ class WordPressPublisher:
                 logger.warning("Could not update media metadata for ID %d: %s", media_id, exc)
 
         logger.info("Media uploaded — ID: %d | Source URL: %s", media_id, source_url)
-        return {"media_id": media_id, "source_url": source_url}
+        return {"media_id": media_id, "source_url": source_url, "sizes": sizes}
 
     def upload_featured_image(
         self,
@@ -248,18 +250,24 @@ class WordPressPublisher:
                 caption=image_caption,
             )
             featured_media_id = media_info["media_id"]
-            source_url = media_info["source_url"]
+            # Prefer medium-sized URL (~380px) for lighter page weight; fall back to full source_url
+            source_url = (
+                media_info.get("sizes", {}).get("medium", {}).get("source_url")
+                or media_info["source_url"]
+            )
 
             caption_text = image_caption if image_caption else title
             figure_html = (
-                f'<figure class="wp-block-image size-large" '
-                f'style="max-width: 480px; margin: 24px auto; text-align: center;">'
+                f'<div class="continuum-img-wrapper" '
+                f'style="max-width: 380px; width: 100%; margin: 20px auto; text-align: center;">'
+                f'<figure class="wp-block-image size-medium" style="margin: 0; padding: 0;">'
                 f'<img src="{source_url}" alt="{image_alt_text or title}" '
-                f'style="width: 100%; max-width: 480px; height: auto; border-radius: 8px; '
-                f'box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />'
-                f'<figcaption style="font-size: 0.88em; color: #555; margin-top: 8px; font-style: italic;">'
+                f'style="max-width: 100%; width: 380px; height: auto; border-radius: 8px; '
+                f'box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block; margin: 0 auto;" />'
+                f'<figcaption style="font-size: 0.85em; color: #555; margin-top: 8px; font-style: italic;">'
                 f'{caption_text}</figcaption>'
-                f'</figure>\n\n'
+                f'</figure>'
+                f'</div>\n\n'
             )
             final_content = figure_html + html_content
 

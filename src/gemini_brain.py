@@ -213,7 +213,15 @@ class GeminiBrain:
         )
 
         raw = self._generate(contents)
-        return self._extract_json(raw)
+        result = self._extract_json(raw)
+
+        # PII Privacy Shield: abort immediately if Gemini flags PII content
+        if result.get("error") == "PII_DETECTED":
+            reason = result.get("reason", "PII detected in image")
+            logger.warning("[GeminiBrain] Privacy Shield triggered — image rejected: %s", reason)
+            raise ValueError(f"PII_DETECTED: {reason}")
+
+        return result
 
     def select_photo_batch(
         self,
@@ -267,7 +275,13 @@ class GeminiBrain:
             "1. APPROVED CONTENT: Camera photographs AND travel-related app screenshots (train e-tickets, 12306 / Trip.com bookings, subway maps, flight confirmations).\n"
             "2. REJECTED CONTENT ONLY: Private financial or identity documents (tax returns, bank statements, credit card numbers, passport bio page scans, NID cards).\n"
             "3. REJECT near-duplicate shots of the exact same subject.\n"
-            f"4. Select 1 PRIMARY PHOTO (best overall visual for featured image) and up to {max_supporting} DISTINCT SUPPORTING PHOTOS for the body story.\n\n"
+            "4. STRICT LOCATION & TOPIC CORRELATION: All photos selected for a single post MUST belong to the "
+            "EXACT same location, event, or specific topic (e.g. all photos from Manila Intramuros, or all Alipay "
+            "app screens). NEVER pair an unrelated tech graphic or hotel room with a street photo from a different "
+            "location. If no supporting photos match the primary photo's exact theme/location, select ONLY 1 photo "
+            "and set supporting_indices to [].\n"
+            f"5. Select 1 PRIMARY PHOTO (best overall visual for featured image) and up to {max_supporting} DISTINCT "
+            f"SUPPORTING PHOTOS for the body story — only if they share the exact same location/topic as the primary.\n\n"
             f"Topic Context: {topic_hint or 'Life logging, tech devlog, travel, digital nomad'}\n\n"
             "Candidate Photos:\n"
             f"{json.dumps(candidates_summary, indent=2)}\n\n"
