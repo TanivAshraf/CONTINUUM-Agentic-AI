@@ -113,7 +113,7 @@ Return ONLY a valid JSON object with these exact keys:
 PHOTO_ANALYSIS_USER = """
 PRIVACY SHIELD CHECK: Before analysing, confirm this image does NOT display any PII
 (home addresses, passport/ID numbers, card numbers, TIN certificates, or personal identity documents).
-If PII is detected, STOP immediately and return {"error": "PII_DETECTED", "reason": "<description>"}.
+If PII is detected, STOP immediately and return {{"error": "PII_DETECTED", "reason": "<description>"}}.
 
 Analyse the following {n_images} image(s) captured on {capture_date}.
 
