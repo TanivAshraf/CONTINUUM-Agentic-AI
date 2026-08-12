@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-11T18:56:11.319557+00:00"
+    "last_updated": "2026-08-12T01:28:11.559541+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "14f-4Utf69100gXdi-J_b71UaLBcKr0j1",
-    "last_processed_timestamp": "2026-08-11T02:48:48.612313+08:00",
+    "last_processed_media_item_id": "10Q_ru2T3yRJOpfsDzz5IjNFe2WqfpAFD",
+    "last_processed_timestamp": "2026-08-12T09:28:11.557556+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,14 +15,15 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1085,
+    "last_published_post_id": 1088,
     "last_published_timestamp": null,
-    "total_posts_published": 10,
+    "total_posts_published": 11,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
       "Logistics Guide: Planning a 14-Day Multi-City China Circuit",
-      "Digital Navigation and Route Planning in Beijing and Chongqing"
+      "Digital Navigation and Route Planning in Beijing and Chongqing",
+      "Navigating Intramuros: Manila Logistics and Historic Routes"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -51,11 +52,19 @@
       "Chongqing Route Planning",
       "Yuzhong District",
       "Yangtze River Cableway",
-      "Chongqing Metro Line 2"
+      "Chongqing Metro Line 2",
+      "Intramuros Manila",
+      "Manila Travel Guide",
+      "Kalesa Transit",
+      "LRT Line 1 Manila",
+      "Fort Santiago",
+      "Metro Manila Transport",
+      "Philippines Travel Logistics",
+      "General Luna Street"
     ]
   },
   "research": {
-    "session_count": 44,
+    "session_count": 45,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -72,7 +81,11 @@
       "ad22b2e31f62e5b2d8b458b35af23e178951b34f77c9d08e4c5eb51e3792d476",
       "1oGDz4tUFY1g5idm8wB1w9LBTLXiZWZeB",
       "fe54528ca1d676701c4077d22f212b104495755e1e4abd8267b0e8e20fba3023",
-      "1mzTo93T09jETpOc3F-MU-pkzToxwQ2Go"
+      "1mzTo93T09jETpOc3F-MU-pkzToxwQ2Go",
+      "1e9b8c999c276f0c4c9e934032876ead4e8e45a17c25614750efdfa287ad69f6",
+      "10Q_ru2T3yRJOpfsDzz5IjNFe2WqfpAFD",
+      "45504b424cb87130e08e567fa67613e36fe40d3d14e7a058ccfe840adf8993c3",
+      "1Dm-QmhcNPZ3r67ba8-8FtxJ6Yxu3xZz8"
     ]
   }
 }
