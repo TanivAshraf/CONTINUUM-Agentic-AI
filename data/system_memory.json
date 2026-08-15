@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-15T12:28:21.128322+00:00"
+    "last_updated": "2026-08-15T18:23:57.088435+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1UnyhhkJaHhagi0zOLukT-XS_zPpicLpC",
-    "last_processed_timestamp": "2026-08-15T14:32:50.207608+08:00",
+    "last_processed_media_item_id": "1peLNvuhXz9GQaOrL5r1x-dlUhHCIIOfG",
+    "last_processed_timestamp": "2026-08-16T02:23:52.938031+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1122,
+    "last_published_post_id": 1126,
     "last_published_timestamp": null,
-    "total_posts_published": 17,
+    "total_posts_published": 18,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -29,7 +29,8 @@
       "Decoding China Southern Baggage Fees: A Cost-Saving Guide",
       "China Airport Power Bank Rules: 100Wh Limit & Security Compliance",
       "China Southern Economy Catering: In-Flight Meal Breakdown",
-      "Navigating the Forbidden City Central Axis in Summer Rain"
+      "Navigating the Forbidden City Central Axis in Summer Rain",
+      "Beijing Airport SIM Card Guide: China Unicom Rates and Setup"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -118,11 +119,21 @@
       "Meridian Gate",
       "Beijing Subway Line 1",
       "China Summer Travel",
-      "Beijing Cultural Sites"
+      "Beijing Cultural Sites",
+      "Beijing Airport",
+      "China Unicom",
+      "China Travel SIM",
+      "Beijing Capital Airport",
+      "China Mobile Connectivity",
+      "Real Name Registration China",
+      "Travel Logistics Beijing",
+      "China Prepaid SIM",
+      "PEK Airport Transport",
+      "China Airport Logistics"
     ]
   },
   "research": {
-    "session_count": 62,
+    "session_count": 63,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -176,7 +187,13 @@
       "da9c24be47cef66db62df9164a6308e862fe24c41cd3cba261d679a36bd31acd",
       "1ed46wJvaeqbcJ-Ydm7KdbtHpTGH7ObA1",
       "c900376fc6a87dd1511a1be16c251668c1fb0dd6ffd003d06821f903707b9ecb",
-      "1YmfcevBhbGySEb476oE7mH6OrB3u6duc"
+      "1YmfcevBhbGySEb476oE7mH6OrB3u6duc",
+      "dabfe4c7f0278f4657796394acd859267f435fad5db0f7a0976445331caedd1e",
+      "1peLNvuhXz9GQaOrL5r1x-dlUhHCIIOfG",
+      "914a40bab488148197374de5ed684042fdacdabce92daf8a65c1501caa9afca0",
+      "1dgdBF1Ya8U7R0i-1ngERQKVIL-QqIkYr",
+      "3c2ecca2654d7f021e6991bdc1dcd53c35dff0040babde24c9ca8f9a1d3d33a6",
+      "10nf8_VLrfYFG57Twq2SYnlrqm3SvZ1L-"
     ]
   }
 }
