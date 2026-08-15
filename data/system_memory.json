@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-14T18:48:24.241542+00:00"
+    "last_updated": "2026-08-15T00:59:40.782599+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1iFlCQjYKMTaTwOg8R_RkKLz6gwI80YTA",
-    "last_processed_timestamp": "2026-08-14T12:10:27.609623+08:00",
+    "last_processed_media_item_id": "1NOs27k6K5a7j4Jg2O3N0D_Hc4rTBN5cq",
+    "last_processed_timestamp": "2026-08-15T08:59:40.777432+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1111,
+    "last_published_post_id": 1117,
     "last_published_timestamp": null,
-    "total_posts_published": 15,
+    "total_posts_published": 16,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -27,7 +27,8 @@
       "WeChat Pay and Alipay Foreign Card Linking Guide for China",
       "12306 Real-Name Authentication: Passport Verification Guide",
       "Decoding China Southern Baggage Fees: A Cost-Saving Guide",
-      "China Airport Power Bank Rules: 100Wh Limit & Security Compliance"
+      "China Airport Power Bank Rules: 100Wh Limit & Security Compliance",
+      "China Southern Economy Catering: In-Flight Meal Breakdown"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -101,11 +102,18 @@
       "Shanghai Pudong Airport",
       "Chongqing Airport",
       "China travel tips",
-      "airport security China"
+      "airport security China",
+      "Airline Catering",
+      "In-Flight Dining",
+      "Economy Class Meals",
+      "Flight Logistics",
+      "China Air Travel",
+      "Travel Tips",
+      "Chinese Food"
     ]
   },
   "research": {
-    "session_count": 59,
+    "session_count": 60,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -145,7 +153,13 @@
       "882288479a5eebe31dbc18218d947655e7fa8245a5fc7f3e37243368f91e8a77",
       "1iFlCQjYKMTaTwOg8R_RkKLz6gwI80YTA",
       "54d640029b66af77d66ac6787712fd358ecb261c0802e1bff840730e2eddea6b",
-      "1KknO_eshLergw-5tMOAR8RPW_dzLDkbP"
+      "1KknO_eshLergw-5tMOAR8RPW_dzLDkbP",
+      "a40fe9f00e988768cb568c05fdbf8516bf57883f8db797cb6492369585f1efba",
+      "1NOs27k6K5a7j4Jg2O3N0D_Hc4rTBN5cq",
+      "6307b6ad5d1372b883a79b6d8ecc5b7279168647a2b5da1aaa302c345575da07",
+      "1KBdHYNRp8nrvgt_2LsZmOGvhWvhqabQr",
+      "ae4abff7499529a07b367d398c8a4971438c5f3c80e2756209060f9dfa68e0bf",
+      "1p4cy0IUK_jV7cjm59rM5rRhhpI7nnpJI"
     ]
   }
 }
