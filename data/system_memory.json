@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-17T06:46:27.661794+00:00"
+    "last_updated": "2026-08-17T12:36:43.023382+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "15Zt-fEINubu8xKkASiWZAH-H4cT5Jzam",
-    "last_processed_timestamp": "2026-08-17T14:46:27.660188+08:00",
+    "last_processed_media_item_id": "1oKTPS8oIO9H8ZXJdAlw6ybwz6k-xPRPJ",
+    "last_processed_timestamp": "2026-08-17T20:36:34.886221+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1147,
+    "last_published_post_id": 1150,
     "last_published_timestamp": null,
-    "total_posts_published": 22,
+    "total_posts_published": 23,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -34,7 +34,8 @@
       "Beijing Dongsi: Navigating Lines 5 & 6 to Longfusi's Cultural Revitalization",
       "Beijing's Varied Experiences: From Scenic Ascent to Hutong Cuisine",
       "Beijing Day Tour Logistics: Navigating Jade Stops and Group Lunches",
-      "Navigating China's Tea Culture: Wuyutai Green Teas & Mall Retail"
+      "Navigating China's Tea Culture: Wuyutai Green Teas & Mall Retail",
+      "Beijing Wangfujing: M&M's World & Boutique Retail Contrast"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -179,11 +180,20 @@
       "Pop-up Store",
       "Chinese Mall",
       "Mobile Payments China",
-      "Tea Prices China"
+      "Tea Prices China",
+      "Beijing",
+      "Wangfujing",
+      "M&M's World Beijing",
+      "Chinese Shopping Street",
+      "Wangfujing Dajie",
+      "Wangfujing Station",
+      "Chinese Retail Experience",
+      "Skincare Boutique",
+      "Travel Photography Tips"
     ]
   },
   "research": {
-    "session_count": 69,
+    "session_count": 70,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -267,7 +277,11 @@
       "aafa16e20241a466f2be5305cfe6fff0295836ad9cad8b4dd160c60e39a765c2",
       "1WsitnHqkldofLdBB7tLLgU51FteXZWfz",
       "f8347a8a6b5e735912e55f5fc9f3c741519ec7e4c14f1b48d2a4a62581e62774",
-      "198btBmzr3TyHbw6LoBB6W25ZY7MI_KQ6"
+      "198btBmzr3TyHbw6LoBB6W25ZY7MI_KQ6",
+      "a347c4a5b84375379d18f7cd71280988f5e20d621b77e04c1c77cdb2f30bf0fd",
+      "1oKTPS8oIO9H8ZXJdAlw6ybwz6k-xPRPJ",
+      "10378facc9b0cb3bdc73295f7b6c445a7fabc95ed5920e91ab30f5d4c533a82a",
+      "193hBzmcpyyqXJxmIbkYMXdYb69ElqeGW"
     ]
   }
 }
