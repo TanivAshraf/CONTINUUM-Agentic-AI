@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-16T18:24:19.392893+00:00"
+    "last_updated": "2026-08-17T01:00:25.693409+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "18n8kHekdt52DLv_r8-LtKFYrRqR13h1T",
-    "last_processed_timestamp": "2026-08-17T02:24:19.390041+08:00",
+    "last_processed_media_item_id": "10q3tzle3j_XnGz6VofqQhthfqaEgX_7x",
+    "last_processed_timestamp": "2026-08-17T09:00:25.690185+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1141,
+    "last_published_post_id": 1143,
     "last_published_timestamp": null,
-    "total_posts_published": 20,
+    "total_posts_published": 21,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -32,7 +32,8 @@
       "Navigating the Forbidden City Central Axis in Summer Rain",
       "Beijing Airport SIM Card Guide: China Unicom Rates and Setup",
       "Beijing Dongsi: Navigating Lines 5 & 6 to Longfusi's Cultural Revitalization",
-      "Beijing's Varied Experiences: From Scenic Ascent to Hutong Cuisine"
+      "Beijing's Varied Experiences: From Scenic Ascent to Hutong Cuisine",
+      "Beijing Day Tour Logistics: Navigating Jade Stops and Group Lunches"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -155,11 +156,21 @@
       "Hong Xing Qian Jin",
       "Beijing Architecture",
       "Urban Photography",
-      "Security Check China"
+      "Security Check China",
+      "Beijing Day Tours",
+      "Great Wall Logistics",
+      "Changping Beijing",
+      "Bus 877 Beijing",
+      "China Tour Logistics",
+      "Beijing Travel Advice",
+      "G6 Expressway Beijing",
+      "Beijing Group Tours",
+      "Badaling Transit",
+      "China Travel Guide"
     ]
   },
   "research": {
-    "session_count": 67,
+    "session_count": 68,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -235,7 +246,9 @@
       "1a8c164d4b6016ea81e4fdb776dada3e99ad3248559607e78740eb688633b921",
       "1sY4hpgBB-Fw5TksScdbZSycGsX2P0FM2",
       "da2e2dac0e8ff7cb9202bb7b3f030c5bfc3518a071197386345ebb3b070853e9",
-      "1dwVIBj22Xl_Pz1t7-d6ZE_zYJ2mehWLO"
+      "1dwVIBj22Xl_Pz1t7-d6ZE_zYJ2mehWLO",
+      "aac750e87ad0954737d615761fd8569eb9524d778470c67d78f1d2c9bf76da61",
+      "10q3tzle3j_XnGz6VofqQhthfqaEgX_7x"
     ]
   }
 }
