@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-17T18:33:37.914597+00:00"
+    "last_updated": "2026-08-18T00:59:12.245106+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1oKTPS8oIO9H8ZXJdAlw6ybwz6k-xPRPJ",
-    "last_processed_timestamp": "2026-08-17T20:36:34.886221+08:00",
+    "last_processed_media_item_id": "1GXij7cwNwcGjzgLbqVbLPTzi-T-rodED",
+    "last_processed_timestamp": "2026-08-18T08:59:12.242000+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1150,
+    "last_published_post_id": 1153,
     "last_published_timestamp": null,
-    "total_posts_published": 23,
+    "total_posts_published": 24,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -35,7 +35,8 @@
       "Beijing's Varied Experiences: From Scenic Ascent to Hutong Cuisine",
       "Beijing Day Tour Logistics: Navigating Jade Stops and Group Lunches",
       "Navigating China's Tea Culture: Wuyutai Green Teas & Mall Retail",
-      "Beijing Wangfujing: M&M's World & Boutique Retail Contrast"
+      "Beijing Wangfujing: M&M's World & Boutique Retail Contrast",
+      "Lanzhou Lamian Guide: Ordering Hand-Pulled Noodles and Dapanji"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -189,11 +190,20 @@
       "Wangfujing Station",
       "Chinese Retail Experience",
       "Skincare Boutique",
-      "Travel Photography Tips"
+      "Travel Photography Tips",
+      "Lanzhou Beef Noodles",
+      "Lanzhou Lamian",
+      "Dapanji",
+      "Chinese Food Guide",
+      "Halal Dining China",
+      "Qingzhen Food",
+      "China Food Travel",
+      "Alipay Food Ordering",
+      "Beibingyang Soda"
     ]
   },
   "research": {
-    "session_count": 71,
+    "session_count": 72,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -281,7 +291,11 @@
       "a347c4a5b84375379d18f7cd71280988f5e20d621b77e04c1c77cdb2f30bf0fd",
       "1oKTPS8oIO9H8ZXJdAlw6ybwz6k-xPRPJ",
       "10378facc9b0cb3bdc73295f7b6c445a7fabc95ed5920e91ab30f5d4c533a82a",
-      "193hBzmcpyyqXJxmIbkYMXdYb69ElqeGW"
+      "193hBzmcpyyqXJxmIbkYMXdYb69ElqeGW",
+      "ed6c1856911aaaf6b8d95a100747e2cbd12a6d9aea400b4a70d1ef4d0810cdee",
+      "1GXij7cwNwcGjzgLbqVbLPTzi-T-rodED",
+      "ff4251e749f010e0bec58a7dbc0cd7943e5084aeba8079b97d71e95b79e69907",
+      "1DV9Lwl7FgJ67XFkD-BUPDDwGW3PmrqAw"
     ]
   }
 }
