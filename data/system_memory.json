@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-19T01:03:33.944221+00:00"
+    "last_updated": "2026-08-19T06:39:20.876651+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "12xwgO99poqQP5vEfeaFd2fqusTBmjA7Y",
-    "last_processed_timestamp": "2026-08-18T20:38:14.165761+08:00",
+    "last_processed_media_item_id": "10A2JrB3RcI2TWT29pVTPoYsS8tc-MPDH",
+    "last_processed_timestamp": "2026-08-19T14:39:14.523432+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1162,
+    "last_published_post_id": 1167,
     "last_published_timestamp": null,
-    "total_posts_published": 26,
+    "total_posts_published": 27,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -38,7 +38,8 @@
       "Beijing Wangfujing: M&M's World & Boutique Retail Contrast",
       "Lanzhou Lamian Guide: Ordering Hand-Pulled Noodles and Dapanji",
       "China High-Speed Rail: In-App Dining at Shijiazhuang & Zhengzhou East",
-      "Hanshemeisu Hotel: Navigating Smart Room Tech in China"
+      "Hanshemeisu Hotel: Navigating Smart Room Tech in China",
+      "Xi'an's Terracotta Army: A First-Hand Guide to Qin Dynasty Scale"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -223,11 +224,22 @@
       "China Travel Tech",
       "Modern Hospitality",
       "Guest Experience China",
-      "Digital Amenities"
+      "Digital Amenities",
+      "Terracotta Army",
+      "Xi'an",
+      "Qin Dynasty",
+      "Qin Shi Huang",
+      "Chinese History",
+      "Archaeological Site",
+      "Museum Visit",
+      "Lintong District",
+      "Travel Logistics China",
+      "WeChat Booking",
+      "Didi China"
     ]
   },
   "research": {
-    "session_count": 76,
+    "session_count": 77,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -331,7 +343,15 @@
       "22bc3a02d9d1a10e1dc09af2de64da1f817f94641b6dd2c781a7254245cb433e",
       "1natFWDolEOW6aMc74orf6R0iXPA_7LJt",
       "c009eca8b78b393e87652b50d025fa8024d6035370fa239ee873df80e879023a",
-      "1s-leqUXcudvLejp035N-wkkxs9AiAuem"
+      "1s-leqUXcudvLejp035N-wkkxs9AiAuem",
+      "a3b91f22d1a08cb248ad5b2cfc9f22364b815b09aab496d40c6f5b637cff9f4a",
+      "10A2JrB3RcI2TWT29pVTPoYsS8tc-MPDH",
+      "f5d6dba52067627735688f7921fdfc3501318a91d1cd4957493bb4c01e823d17",
+      "1Zh_JaYJMX46-SrU0IsZF2WxYaJ5hpc7V",
+      "11bd3e6d1350a15d94ebeeb0c807bb3f54655ed748e555d144a10431fec45dd6",
+      "1U24bfDVh_fbJzCkcLvSQeXBOKU-nAv6n",
+      "44cebcd3b77b89993eb901b5f72dee11f7f7d2460a88191068142a28e28c570f",
+      "1D6lHjBUfuhcHyF814BW_I4RAAX8IEqur"
     ]
   }
 }
