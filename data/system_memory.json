@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-20T08:34:33.775524+00:00"
+    "last_updated": "2026-08-20T12:41:04.380400+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "10A2JrB3RcI2TWT29pVTPoYsS8tc-MPDH",
-    "last_processed_timestamp": "2026-08-19T14:39:14.523432+08:00",
+    "last_processed_media_item_id": "1MSDJxl6r7K9riGGt2Th1chy-gyCas5rk",
+    "last_processed_timestamp": "2026-08-20T20:40:55.876401+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1167,
+    "last_published_post_id": 1172,
     "last_published_timestamp": null,
-    "total_posts_published": 27,
+    "total_posts_published": 28,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -39,7 +39,8 @@
       "Lanzhou Lamian Guide: Ordering Hand-Pulled Noodles and Dapanji",
       "China High-Speed Rail: In-App Dining at Shijiazhuang & Zhengzhou East",
       "Hanshemeisu Hotel: Navigating Smart Room Tech in China",
-      "Xi'an's Terracotta Army: A First-Hand Guide to Qin Dynasty Scale"
+      "Xi'an's Terracotta Army: A First-Hand Guide to Qin Dynasty Scale",
+      "Chongqing Rail: From G-Train Efficiency to Local Station Flavors"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -235,11 +236,23 @@
       "Lintong District",
       "Travel Logistics China",
       "WeChat Booking",
-      "Didi China"
+      "Didi China",
+      "China High-Speed Rail Travel",
+      "G-train China Logistics",
+      "Chongqing Rail Station",
+      "Real Name Authentication China",
+      "Trip.com Booking Guide",
+      "Chongqing Xiaomian",
+      "Chinese Train Amenities",
+      "Travel Photography China",
+      "Passport Verification China",
+      "China Metro Transfer",
+      "Luggage Policy China Rail",
+      "Train Ticket Booking"
     ]
   },
   "research": {
-    "session_count": 83,
+    "session_count": 84,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -351,7 +364,15 @@
       "11bd3e6d1350a15d94ebeeb0c807bb3f54655ed748e555d144a10431fec45dd6",
       "1U24bfDVh_fbJzCkcLvSQeXBOKU-nAv6n",
       "44cebcd3b77b89993eb901b5f72dee11f7f7d2460a88191068142a28e28c570f",
-      "1D6lHjBUfuhcHyF814BW_I4RAAX8IEqur"
+      "1D6lHjBUfuhcHyF814BW_I4RAAX8IEqur",
+      "c9a23406fe1a98dcddc85da65bcff25216b3637d731a80746e6808827e621d45",
+      "1MSDJxl6r7K9riGGt2Th1chy-gyCas5rk",
+      "e50ded9e095d5ed7888941ecbf751a9d7f09d82db734c6464f6d6cd35278def3",
+      "1OlPLGwdZRI6sMTHmUw-LThI6vAc8IZ3G",
+      "80eee63d42dc2b9a8e5211846adbcbec69be374337de52c0da3c078e407c1b28",
+      "1S-aRBqhta9zQ3Vm9Ba-23R4WU8rGYKNU",
+      "b8bfdcf868d0668d59b40c6c9cb04ec9717b399bb9529d95f3e0681518a98a3a",
+      "10mHa0Gf62dgrNoyYfqK9Oy-BxnaX4MsN"
     ]
   }
 }
