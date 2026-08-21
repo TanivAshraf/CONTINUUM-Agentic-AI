@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-21T06:41:07.452243+00:00"
+    "last_updated": "2026-08-21T12:40:04.026605+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1GwlQjNid3XEc8Uq0vQOcqIh-0x0SdI_S",
-    "last_processed_timestamp": "2026-08-21T14:41:07.449188+08:00",
+    "last_processed_media_item_id": "1uFKddC7Ow5m42BNuqRsHxutYSIIF5qyv",
+    "last_processed_timestamp": "2026-08-21T20:40:04.020838+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1180,
+    "last_published_post_id": 1185,
     "last_published_timestamp": null,
-    "total_posts_published": 30,
+    "total_posts_published": 31,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -42,7 +42,8 @@
       "Xi'an's Terracotta Army: A First-Hand Guide to Qin Dynasty Scale",
       "Chongqing Rail: From G-Train Efficiency to Local Station Flavors",
       "Chongqing Hot Pot Guide: Mala Broth, Dipping Oils & Night Walk",
-      "Chongqing's Dual Identity: Raffles City to Shibati Heritage"
+      "Chongqing's Dual Identity: Raffles City to Shibati Heritage",
+      "Chongqing's Hongyadong: Tiered Architecture at Sunset & Modern Commerce"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -271,11 +272,20 @@
       "The Crystal Sky Bridge",
       "Chongqing Metro",
       "Chinese Cultural Heritage",
-      "City Skylines"
+      "City Skylines",
+      "Chongqing",
+      "Hongyadong",
+      "Diaojiaolou Architecture",
+      "WeChat Pay",
+      "Alipay",
+      "Chinese Crafts",
+      "Sunset Photography",
+      "Bayu Culture",
+      "Urban Exploration"
     ]
   },
   "research": {
-    "session_count": 87,
+    "session_count": 88,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -407,7 +417,15 @@
       "0b68460ad667c7f4263db3d5d791fa4bf1059b58d5ccf32cfe67f0d9476f5ef3",
       "1IryEQhNIzgFLA5d1uv4lxqW6-VN8-dGq",
       "f4e681c4367fe7f1a99830e300302a79426593887e72eeaddeba5b4d5e396203",
-      "155LisciVai2Iara6yGT5XvABXQITljO0"
+      "155LisciVai2Iara6yGT5XvABXQITljO0",
+      "161ee06324d8710e731d4670905bb3d32c5b33cb77b20d40ebecd800212604d6",
+      "1uFKddC7Ow5m42BNuqRsHxutYSIIF5qyv",
+      "f09f1ee078f83333914cd08f3c3fd4f67ec28040470fff9352f5e8bcea7d78be",
+      "1xln57pTV3mQ1t_s3omYHTbGnpdsjwLwq",
+      "d3552004241648bc2a3b36901e170059d7a3e15efafba1ce2b9ee072d1a0c3c5",
+      "1b3lz882gmogmirLK1dMIvtyF-LViQRoT",
+      "8655cec51a022d9e38f4b0b1876c8faecac65986a2c4b9b370ee766c08b7d77d",
+      "1ui_AlFpsXc-0ro_QT_jjCDpcf6r00Ufn"
     ]
   }
 }
