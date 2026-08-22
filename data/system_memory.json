@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-21T12:40:04.026605+00:00"
+    "last_updated": "2026-08-22T01:00:29.509333+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1uFKddC7Ow5m42BNuqRsHxutYSIIF5qyv",
-    "last_processed_timestamp": "2026-08-21T20:40:04.020838+08:00",
+    "last_processed_media_item_id": "1GR5iPJtxKPZPH4Y6WL_kwpRuLZFyvdBe",
+    "last_processed_timestamp": "2026-08-22T09:00:29.507894+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1185,
+    "last_published_post_id": 1190,
     "last_published_timestamp": null,
-    "total_posts_published": 31,
+    "total_posts_published": 32,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -43,7 +43,8 @@
       "Chongqing Rail: From G-Train Efficiency to Local Station Flavors",
       "Chongqing Hot Pot Guide: Mala Broth, Dipping Oils & Night Walk",
       "Chongqing's Dual Identity: Raffles City to Shibati Heritage",
-      "Chongqing's Hongyadong: Tiered Architecture at Sunset & Modern Commerce"
+      "Chongqing's Hongyadong: Tiered Architecture at Sunset & Modern Commerce",
+      "Chongqing Jiefangbei Night Guide: Stalls, Culture & Transit"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -281,11 +282,18 @@
       "Chinese Crafts",
       "Sunset Photography",
       "Bayu Culture",
-      "Urban Exploration"
+      "Urban Exploration",
+      "China Night Economy",
+      "Linjiangmen Station",
+      "Jiaochangkou Station",
+      "Chongqing Rail Transit",
+      "Trunk Markets China",
+      "Alipay QR Payments",
+      "Chongqing Street Photography"
     ]
   },
   "research": {
-    "session_count": 88,
+    "session_count": 89,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -425,7 +433,15 @@
       "d3552004241648bc2a3b36901e170059d7a3e15efafba1ce2b9ee072d1a0c3c5",
       "1b3lz882gmogmirLK1dMIvtyF-LViQRoT",
       "8655cec51a022d9e38f4b0b1876c8faecac65986a2c4b9b370ee766c08b7d77d",
-      "1ui_AlFpsXc-0ro_QT_jjCDpcf6r00Ufn"
+      "1ui_AlFpsXc-0ro_QT_jjCDpcf6r00Ufn",
+      "f3e66fd991e956ae60048209f628126ad150498a45368b1a1333ea68ba795a54",
+      "1GR5iPJtxKPZPH4Y6WL_kwpRuLZFyvdBe",
+      "48421ac9c2a6fd79ef50ed5107df64990760d0702e3782551fb44e7b91bd0488",
+      "1M05aGy6HdZkKdqxCbh0SmwaeOASkO8cc",
+      "dc233429869af950133777b268d8436418f0ba50233df409d2a13a7b4c116db2",
+      "14F7GrlEvUxPGSAaWAHxdxGLZ6Mnyo0oU",
+      "3b743e5598afe7e9a961170e939b1c265f5e485ad668085b336f52f48ba7109c",
+      "19veR5VaFvifhJknb2KzA5V8VT6qin2PB"
     ]
   }
 }
