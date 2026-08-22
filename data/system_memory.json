@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-22T06:31:27.396128+00:00"
+    "last_updated": "2026-08-22T12:34:14.498856+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1GR5iPJtxKPZPH4Y6WL_kwpRuLZFyvdBe",
-    "last_processed_timestamp": "2026-08-22T09:00:29.507894+08:00",
+    "last_processed_media_item_id": "1awJZxEAFCg8DqzolpQ_vxtiTsFmkYZAR",
+    "last_processed_timestamp": "2026-08-22T20:34:08.656775+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1190,
+    "last_published_post_id": 1195,
     "last_published_timestamp": null,
-    "total_posts_published": 32,
+    "total_posts_published": 33,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -44,7 +44,8 @@
       "Chongqing Hot Pot Guide: Mala Broth, Dipping Oils & Night Walk",
       "Chongqing's Dual Identity: Raffles City to Shibati Heritage",
       "Chongqing's Hongyadong: Tiered Architecture at Sunset & Modern Commerce",
-      "Chongqing Jiefangbei Night Guide: Stalls, Culture & Transit"
+      "Chongqing Jiefangbei Night Guide: Stalls, Culture & Transit",
+      "Shanghai's Urban Tapestry: Xinjiang Flavors Near People's Square"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -289,11 +290,22 @@
       "Chongqing Rail Transit",
       "Trunk Markets China",
       "Alipay QR Payments",
-      "Chongqing Street Photography"
+      "Chongqing Street Photography",
+      "Shanghai Streets",
+      "Xinjiang Cuisine Shanghai",
+      "Radisson Blu Shanghai",
+      "People's Square",
+      "Naan Pit Lamb Chops",
+      "Chinese Street Food",
+      "Shanghai Architecture",
+      "Shikumen Style",
+      "Alipay Dining",
+      "WeChat Pay China",
+      "Shanghai Restaurants"
     ]
   },
   "research": {
-    "session_count": 90,
+    "session_count": 91,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -441,7 +453,15 @@
       "dc233429869af950133777b268d8436418f0ba50233df409d2a13a7b4c116db2",
       "14F7GrlEvUxPGSAaWAHxdxGLZ6Mnyo0oU",
       "3b743e5598afe7e9a961170e939b1c265f5e485ad668085b336f52f48ba7109c",
-      "19veR5VaFvifhJknb2KzA5V8VT6qin2PB"
+      "19veR5VaFvifhJknb2KzA5V8VT6qin2PB",
+      "4a2e5720246ad37b2a8fbf57a890ac40a6423e774f0e97eb30f65e40cd9382f3",
+      "1awJZxEAFCg8DqzolpQ_vxtiTsFmkYZAR",
+      "84f17f05fe9e6c22cd04b313d312c54e2dd59af5b52c7932fb999ce15a823872",
+      "1X_Y4wSqmDVep7Sp0kAi_D8wvhlvxHk29",
+      "0474652faf919122d5cc94cf8e4ea44eec9e6555225919e57b47a50bf4b43ef4",
+      "1yEJualNPkdf0sB3jjsOI0HRYuiFNxauS",
+      "19dbdfa660d7323d12d8d9eb7abab631bf93572274a1ded25529f0a32d4d3e00",
+      "1Jtohcmd61CPnsFRTTOOu8eGFWQzT8fuS"
     ]
   }
 }
