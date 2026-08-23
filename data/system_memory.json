@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-23T06:33:19.997415+00:00"
+    "last_updated": "2026-08-23T12:32:51.810730+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1DV8zX1ZMUTxMiX-sNOIg_FqfP3xVXEQi",
-    "last_processed_timestamp": "2026-08-23T09:05:04.965455+08:00",
+    "last_processed_media_item_id": "1nEiCSN11d-AKi6tiBdp8Bt3F_cKw3Gny",
+    "last_processed_timestamp": "2026-08-23T20:32:51.809331+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1202,
+    "last_published_post_id": 1207,
     "last_published_timestamp": null,
-    "total_posts_published": 35,
+    "total_posts_published": 36,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -47,7 +47,8 @@
       "Chongqing Jiefangbei Night Guide: Stalls, Culture & Transit",
       "Shanghai's Urban Tapestry: Xinjiang Flavors Near People's Square",
       "Decoding Your Chinese Hotel AC: Hitachi Controls & Comfort in China",
-      "Riding China's G1232: Shanghai Hongqiao to Dandong First Class"
+      "Riding China's G1232: Shanghai Hongqiao to Dandong First Class",
+      "Suzhou's Yi Garden: Qing Dynasty Tranquility & Urban Pulse"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -318,11 +319,21 @@
       "China Railway Shenyang",
       "Dandong Train",
       "12306 Booking Guide",
-      "CRH Travel"
+      "CRH Travel",
+      "Suzhou Travel",
+      "Yi Garden",
+      "Classical Chinese Garden",
+      "Qing Dynasty Architecture",
+      "Suzhou Local Life",
+      "Pedicab China",
+      "Suzhou Metro",
+      "Chinese Garden Entry Fees",
+      "Suzhou Photography",
+      "Urban Exploration China"
     ]
   },
   "research": {
-    "session_count": 94,
+    "session_count": 95,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -488,7 +499,13 @@
       "f5d3060ad7a075195a8016d1ab67148f800a9f6dd1c043d84709e7a07b8e7f77",
       "1irFbisM74jDD48wt1-HeFTYaxgyTUqYg",
       "c3eb1259abbcddbc2062ef8baf0a63a90731f310167316abe95bbd6acb1b1281",
-      "1ElQz4fpFWRx6F8yQ0L4QUk5WXuXM04qt"
+      "1ElQz4fpFWRx6F8yQ0L4QUk5WXuXM04qt",
+      "cf0e1bd48566900e0538c6df090e01ae62bc9f23492dca7c98c63a93ca833d07",
+      "1nEiCSN11d-AKi6tiBdp8Bt3F_cKw3Gny",
+      "cbb8bcdb2eae3b4206eabc4dd062fb4e4847994d4c8d8f9974e6d6d43af4fcac",
+      "1rHMReoXBhizkkJK-ds2qTM5exq_EdSC1",
+      "ba916e0f02186bed9dde65c805c337fb5bd43e7c4fb5e151337297e5a4ee4bcf",
+      "1zx2XJFnhf9djoj3Kvn8iAMtaJl9bWbMu"
     ]
   }
 }
