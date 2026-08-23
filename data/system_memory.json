@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-22T18:27:56.159871+00:00"
+    "last_updated": "2026-08-23T01:05:04.967166+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1BwSe1yYE1h_wPjJDRGRadhb4WneKmbtL",
-    "last_processed_timestamp": "2026-08-23T02:27:56.158725+08:00",
+    "last_processed_media_item_id": "1DV8zX1ZMUTxMiX-sNOIg_FqfP3xVXEQi",
+    "last_processed_timestamp": "2026-08-23T09:05:04.965455+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1197,
+    "last_published_post_id": 1202,
     "last_published_timestamp": null,
-    "total_posts_published": 34,
+    "total_posts_published": 35,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -46,7 +46,8 @@
       "Chongqing's Hongyadong: Tiered Architecture at Sunset & Modern Commerce",
       "Chongqing Jiefangbei Night Guide: Stalls, Culture & Transit",
       "Shanghai's Urban Tapestry: Xinjiang Flavors Near People's Square",
-      "Decoding Your Chinese Hotel AC: Hitachi Controls & Comfort in China"
+      "Decoding Your Chinese Hotel AC: Hitachi Controls & Comfort in China",
+      "Riding China's G1232: Shanghai Hongqiao to Dandong First Class"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -311,11 +312,17 @@
       "Hotel Room Tips",
       "Air Conditioning Guide",
       "Mandarin for Travelers",
-      "China Accommodation"
+      "China Accommodation",
+      "G1232 Train",
+      "G-Train First Class",
+      "China Railway Shenyang",
+      "Dandong Train",
+      "12306 Booking Guide",
+      "CRH Travel"
     ]
   },
   "research": {
-    "session_count": 92,
+    "session_count": 93,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -473,7 +480,15 @@
       "19dbdfa660d7323d12d8d9eb7abab631bf93572274a1ded25529f0a32d4d3e00",
       "1Jtohcmd61CPnsFRTTOOu8eGFWQzT8fuS",
       "3e0336d95f4c95095e8bfc3ba2ff58f5c8658bc5aeece9bcd1904eb686ac387e",
-      "1BwSe1yYE1h_wPjJDRGRadhb4WneKmbtL"
+      "1BwSe1yYE1h_wPjJDRGRadhb4WneKmbtL",
+      "d3eca0149a5c744ab9b4b1a73a89d3aa4244c1c676ba128a1a9a20e7c8ae3236",
+      "1DV8zX1ZMUTxMiX-sNOIg_FqfP3xVXEQi",
+      "e80e241a4f6a19b260533dcfd81ac2e8847e5c6a372ee2d5bc21f086c12615a8",
+      "1GPh2-v0ukrDhoN_9HDU-v0JnUI52hHYZ",
+      "f5d3060ad7a075195a8016d1ab67148f800a9f6dd1c043d84709e7a07b8e7f77",
+      "1irFbisM74jDD48wt1-HeFTYaxgyTUqYg",
+      "c3eb1259abbcddbc2062ef8baf0a63a90731f310167316abe95bbd6acb1b1281",
+      "1ElQz4fpFWRx6F8yQ0L4QUk5WXuXM04qt"
     ]
   }
 }
