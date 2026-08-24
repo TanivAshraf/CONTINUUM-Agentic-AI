@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-24T01:03:17.373191+00:00"
+    "last_updated": "2026-08-24T05:07:53.712887+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1nEiCSN11d-AKi6tiBdp8Bt3F_cKw3Gny",
-    "last_processed_timestamp": "2026-08-23T20:32:51.809331+08:00",
+    "last_processed_media_item_id": "1D-yKvQkIy0q0ccvgwZPp0tkiDkeVhWYP",
+    "last_processed_timestamp": "2026-08-24T13:07:48.372402+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1207,
+    "last_published_post_id": 1212,
     "last_published_timestamp": null,
-    "total_posts_published": 36,
+    "total_posts_published": 37,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -48,7 +48,8 @@
       "Shanghai's Urban Tapestry: Xinjiang Flavors Near People's Square",
       "Decoding Your Chinese Hotel AC: Hitachi Controls & Comfort in China",
       "Riding China's G1232: Shanghai Hongqiao to Dandong First Class",
-      "Suzhou's Yi Garden: Qing Dynasty Tranquility & Urban Pulse"
+      "Suzhou's Yi Garden: Qing Dynasty Tranquility & Urban Pulse",
+      "Suzhou Metro Art, Shanghai Grand Theatre, & Northwestern Cuisine"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -329,11 +330,21 @@
       "Suzhou Metro",
       "Chinese Garden Entry Fees",
       "Suzhou Photography",
-      "Urban Exploration China"
+      "Urban Exploration China",
+      "Huqiu Station",
+      "Tiger Hill Suzhou",
+      "Shanghai Grand Theatre",
+      "Chinese Cinema",
+      "Night Photography Shanghai",
+      "Northwestern Chinese Food",
+      "Suolaiman Restaurant",
+      "Chinese Noodles",
+      "Metro Art China",
+      "Shanghai Culture"
     ]
   },
   "research": {
-    "session_count": 97,
+    "session_count": 98,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -506,7 +517,13 @@
       "1rHMReoXBhizkkJK-ds2qTM5exq_EdSC1",
       "ba916e0f02186bed9dde65c805c337fb5bd43e7c4fb5e151337297e5a4ee4bcf",
       "1zx2XJFnhf9djoj3Kvn8iAMtaJl9bWbMu",
-      "1jKLAQmlIw0TNPjfmoExWpbs_5dtWfvzU"
+      "1jKLAQmlIw0TNPjfmoExWpbs_5dtWfvzU",
+      "be2a9914b7f6883c4239c64d53ac6c0ab5312fbafd9992e63b4deef358898dd5",
+      "1D-yKvQkIy0q0ccvgwZPp0tkiDkeVhWYP",
+      "b946a839e9e387d593526e1b7e385319a62d8e25e30e4deb1d79f7b8d024b35f",
+      "1d5ow9eT---ojl-8yTZU0AAwkJ4QUer9S",
+      "c4ca5faec760439cbc270c1a70e2e1d1d7aa5cb602f2b565981250c216d7fcca",
+      "1-lCXo1Qg31W1SpptSB6indALr78lOjNn"
     ]
   }
 }
