@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-24T06:47:50.369455+00:00"
+    "last_updated": "2026-08-24T12:41:59.401226+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1D-yKvQkIy0q0ccvgwZPp0tkiDkeVhWYP",
-    "last_processed_timestamp": "2026-08-24T13:07:48.372402+08:00",
+    "last_processed_media_item_id": "1-j6DWr9d5WyaW4sJzscTPDF1Tom_xHPS",
+    "last_processed_timestamp": "2026-08-24T20:41:59.399615+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1212,
+    "last_published_post_id": 1217,
     "last_published_timestamp": null,
-    "total_posts_published": 37,
+    "total_posts_published": 38,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -49,7 +49,8 @@
       "Decoding Your Chinese Hotel AC: Hitachi Controls & Comfort in China",
       "Riding China's G1232: Shanghai Hongqiao to Dandong First Class",
       "Suzhou's Yi Garden: Qing Dynasty Tranquility & Urban Pulse",
-      "Suzhou Metro Art, Shanghai Grand Theatre, & Northwestern Cuisine"
+      "Suzhou Metro Art, Shanghai Grand Theatre, & Northwestern Cuisine",
+      "Shanghai's Wukang Road: Art Deco, Dragon Reliefs, and Vintage Finds"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -340,11 +341,22 @@
       "Suolaiman Restaurant",
       "Chinese Noodles",
       "Metro Art China",
-      "Shanghai Culture"
+      "Shanghai Culture",
+      "Shanghai",
+      "Wukang Road",
+      "Former French Concession",
+      "Art Deco Architecture",
+      "Vintage Shopping",
+      "Street Photography Shanghai",
+      "Shanghai Maochang Building",
+      "Chinese Dragon Art",
+      "Shanghai Metro",
+      "Travel Photography",
+      "Cultural Sites Shanghai"
     ]
   },
   "research": {
-    "session_count": 99,
+    "session_count": 100,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -523,7 +535,15 @@
       "b946a839e9e387d593526e1b7e385319a62d8e25e30e4deb1d79f7b8d024b35f",
       "1d5ow9eT---ojl-8yTZU0AAwkJ4QUer9S",
       "c4ca5faec760439cbc270c1a70e2e1d1d7aa5cb602f2b565981250c216d7fcca",
-      "1-lCXo1Qg31W1SpptSB6indALr78lOjNn"
+      "1-lCXo1Qg31W1SpptSB6indALr78lOjNn",
+      "2ff52045af354c2e4b883f92667ed4c11c0aa7827112da5753d3e17c7b175efb",
+      "1-j6DWr9d5WyaW4sJzscTPDF1Tom_xHPS",
+      "3ddcb707f43817fe7000176aab90c8dd439fe285cb0d690bd816f513fbae6dd7",
+      "1UUw86L0RPG5Ufx5Lf-RG54D5ukHflTnw",
+      "dded2d5cf23d2ce6a38d9bd2ddfb1161cd13be5cdc48276461f01a0aa4b980b2",
+      "16tfL-h_eHgGGl0eF-u-B3ExLxYwQNvMx",
+      "01e6596bb21018371d0703b52fd259b42c9457fb3cd34c0af0cb42bfaeacd90a",
+      "1d0iih1c745copmLE4nHanIXv9pErb0QR"
     ]
   }
 }
