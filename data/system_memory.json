@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-25T06:38:10.254268+00:00"
+    "last_updated": "2026-08-25T11:28:24.265901+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1VaICPG3avE2VqJnCi5jYmgKaZxPpbVaO",
-    "last_processed_timestamp": "2026-08-25T11:41:14.178608+08:00",
+    "last_processed_media_item_id": "1thXnk5vZ0v2HLf5mGTvZFcgmCRuuZ-fy",
+    "last_processed_timestamp": "2026-08-25T19:28:24.262116+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1222,
+    "last_published_post_id": 1225,
     "last_published_timestamp": null,
-    "total_posts_published": 39,
+    "total_posts_published": 40,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -51,7 +51,8 @@
       "Suzhou's Yi Garden: Qing Dynasty Tranquility & Urban Pulse",
       "Suzhou Metro Art, Shanghai Grand Theatre, & Northwestern Cuisine",
       "Shanghai's Wukang Road: Art Deco, Dragon Reliefs, and Vintage Finds",
-      "Shanghai Nights: Neon Heritage, Noodle Bowls, and Modern Retail"
+      "Shanghai Nights: Neon Heritage, Noodle Bowls, and Modern Retail",
+      "Shanghai Disneyland's TRON: Navigating Evening Thrills & Logistics"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -360,11 +361,21 @@
       "Tomato Beef Noodles",
       "Shanghai Retail",
       "Shanghai Food Guide",
-      "People's Square Station"
+      "People's Square Station",
+      "Shanghai Disneyland",
+      "TRON Lightcycle Power Run",
+      "Shanghai Travel",
+      "Theme Park China",
+      "Disney Premier Access",
+      "Shanghai Metro Line 11",
+      "Evening Photography",
+      "Trip.com Booking",
+      "Roller Coaster",
+      "Queue Management"
     ]
   },
   "research": {
-    "session_count": 103,
+    "session_count": 104,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -559,7 +570,11 @@
       "04067e6916c05631810ca131273dc79f37920a7563f131eef17285bfeca2cba9",
       "1yGWHCrvNUDLI6hXp7ZGfhkkczvwjPIbN",
       "98d2fe67d98e947fa166710379ed90452282bebc93607bcbb503caa1d720ba57",
-      "1GBGFmYrISzIv0w3XMRGz4BjSCCiwa_5M"
+      "1GBGFmYrISzIv0w3XMRGz4BjSCCiwa_5M",
+      "2bbf8102ae44edc8fdba23e44979a571e1f8dcc7ed7e282cc03c5c955e82bb6d",
+      "1thXnk5vZ0v2HLf5mGTvZFcgmCRuuZ-fy",
+      "bbff75b159d5088de299bae1e1167fc681f51e25498f927316e770e360d162fd",
+      "1JMXsNL6w1D3EKIMg-fv5M6uPH_Kvznnf"
     ]
   }
 }
