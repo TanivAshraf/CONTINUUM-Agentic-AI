@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-25T18:37:56.600664+00:00"
+    "last_updated": "2026-08-26T01:03:09.116344+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "12ydyjMLvuWRN72bSrWKiaPzrHmYh7PjF",
-    "last_processed_timestamp": "2026-08-26T02:37:56.598348+08:00",
+    "last_processed_media_item_id": "1vq-Bkfj9zYjpZ_8Qc_bWt52V_7GDmny6",
+    "last_processed_timestamp": "2026-08-26T09:03:09.112684+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1229,
+    "last_published_post_id": 1232,
     "last_published_timestamp": null,
-    "total_posts_published": 41,
+    "total_posts_published": 42,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -53,7 +53,8 @@
       "Shanghai's Wukang Road: Art Deco, Dragon Reliefs, and Vintage Finds",
       "Shanghai Nights: Neon Heritage, Noodle Bowls, and Modern Retail",
       "Shanghai Disneyland's TRON: Navigating Evening Thrills & Logistics",
-      "Shanghai Disneyland's Night Spectacular: Logistics & Viewing Guide"
+      "Shanghai Disneyland's Night Spectacular: Logistics & Viewing Guide",
+      "Shanghai Disneyland: Capturing the Enchanted Night Spectacle"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -379,11 +380,20 @@
       "Theme Park Logistics",
       "Night Photography",
       "Metro Travel China",
-      "Crowd Management"
+      "Crowd Management",
+      "Night Spectacle",
+      "Disney Parks China",
+      "Theme Park Photography",
+      "Metro Line 11",
+      "Fireworks Show",
+      "Projection Mapping",
+      "Avengers Disney",
+      "Trip.com Disney",
+      "Shanghai Attractions"
     ]
   },
   "research": {
-    "session_count": 106,
+    "session_count": 107,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -588,7 +598,11 @@
       "0438a2eb93cc2ef00ac2bc21d0a9827ea0d5ec38fc0c8d2c4b2c180bcfde0dcb",
       "1jQmnNKI58MHpQuWQSoO4uUHwT5Qzy6bm",
       "081d841fd0fb8be19044479596745f9ee246b33eb671b2415e0806056e68e8fe",
-      "1j45wno5HfEGboNdx90HbMPK5aTQjTWr-"
+      "1j45wno5HfEGboNdx90HbMPK5aTQjTWr-",
+      "070c5c5a2e8acfa44b2405454fba04ceb365e40f828e750f989d98dc748397b9",
+      "1vq-Bkfj9zYjpZ_8Qc_bWt52V_7GDmny6",
+      "0c4eb9b371e1dbd2c0aaa0306ece83cd39afcfb08e8bb935c63aea19ab068e73",
+      "1-nJ2ckpRdEfzAd9EE2mvfIrxYdubxG4A"
     ]
   }
 }
