@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-26T01:03:09.116344+00:00"
+    "last_updated": "2026-08-26T06:43:14.559193+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1vq-Bkfj9zYjpZ_8Qc_bWt52V_7GDmny6",
-    "last_processed_timestamp": "2026-08-26T09:03:09.112684+08:00",
+    "last_processed_media_item_id": "1xEWhFvmmuLrbUKCqWd-sfxKqWkcZyIph",
+    "last_processed_timestamp": "2026-08-26T14:43:14.558022+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1232,
+    "last_published_post_id": 1236,
     "last_published_timestamp": null,
-    "total_posts_published": 42,
+    "total_posts_published": 43,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -54,7 +54,8 @@
       "Shanghai Nights: Neon Heritage, Noodle Bowls, and Modern Retail",
       "Shanghai Disneyland's TRON: Navigating Evening Thrills & Logistics",
       "Shanghai Disneyland's Night Spectacular: Logistics & Viewing Guide",
-      "Shanghai Disneyland: Capturing the Enchanted Night Spectacle"
+      "Shanghai Disneyland: Capturing the Enchanted Night Spectacle",
+      "Shanghai's AIRPARK: Art, Retail & Modern Urban Design in Minhang"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -389,11 +390,22 @@
       "Projection Mapping",
       "Avengers Disney",
       "Trip.com Disney",
-      "Shanghai Attractions"
+      "Shanghai Attractions",
+      "Shanghai AIRPARK",
+      "Aegean Place Shopping Park",
+      "Minhang District Shanghai",
+      "Shanghai Shopping",
+      "Modern Architecture China",
+      "Dr. Martens China",
+      "Stanley Vending Machine",
+      "Shanghai Metro Line 10",
+      "Urban Photography Shanghai",
+      "Retail Experience China",
+      "Art Installation Shanghai"
     ]
   },
   "research": {
-    "session_count": 107,
+    "session_count": 108,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -602,7 +614,13 @@
       "070c5c5a2e8acfa44b2405454fba04ceb365e40f828e750f989d98dc748397b9",
       "1vq-Bkfj9zYjpZ_8Qc_bWt52V_7GDmny6",
       "0c4eb9b371e1dbd2c0aaa0306ece83cd39afcfb08e8bb935c63aea19ab068e73",
-      "1-nJ2ckpRdEfzAd9EE2mvfIrxYdubxG4A"
+      "1-nJ2ckpRdEfzAd9EE2mvfIrxYdubxG4A",
+      "484eb63311586cf1dbc2e7fae0f5ea7a742d36999e3949be317a2417b35a3c90",
+      "1xEWhFvmmuLrbUKCqWd-sfxKqWkcZyIph",
+      "33498533ffd8561b2caba96653b2007d0b6972a88ec21026ad37fab2aa157f84",
+      "1efi4XZUKky265poeNrbj7uMKtc1haIm8",
+      "4ae9a5849b4281f79f6945ef911d7861347de94b196e53d71488247602edf714",
+      "1HQ9yP4YK0i9MrEvbTg5TGsRDqKTpLZ61"
     ]
   }
 }
