@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-27T15:35:28.345254+00:00"
+    "last_updated": "2026-08-27T15:59:41.299621+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "18GrhY32Iyv4zFeSYgyITQOZeQESjKy7R",
-    "last_processed_timestamp": "2026-08-27T14:44:20.830462+08:00",
+    "last_processed_media_item_id": "1K-e05_btWw9iQ8NinG7NEive4QM40QGs",
+    "last_processed_timestamp": "2026-08-27T23:59:41.297601+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1245,
+    "last_published_post_id": 1250,
     "last_published_timestamp": null,
-    "total_posts_published": 45,
+    "total_posts_published": 46,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -57,7 +57,8 @@
       "Shanghai Disneyland: Capturing the Enchanted Night Spectacle",
       "Shanghai's AIRPARK: Art, Retail & Modern Urban Design in Minhang",
       "Urban China: Panda Lattes, Popeyes & Experiential Retail",
-      "Nanjing Road East: Shanghai's Historic Pedestrian Shopping Artery"
+      "Nanjing Road East: Shanghai's Historic Pedestrian Shopping Artery",
+      "Shanghai Yuyuan Garden: Nocturnal Glow & Crab Roe Tangbao"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -419,11 +420,19 @@
       "Mao Chang Optical",
       "Shanghai No.1 Department Store",
       "Alipay China",
-      "Shanghai Landmarks"
+      "Shanghai Landmarks",
+      "Shanghai Yuyuan Garden",
+      "Yuyuan Tourist Mart",
+      "Huxinting Teahouse",
+      "Jiuqu Bridge",
+      "Tangbao",
+      "Crab Roe Soup Dumpling",
+      "Xièhuáng Tāngbāo",
+      "Mobile Payment China"
     ]
   },
   "research": {
-    "session_count": 113,
+    "session_count": 114,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -652,7 +661,15 @@
       "c680454052be9e25f028e7813c7261b37da7a8d9131b1e6316037732625a83ad",
       "1L_fZryQLan47DkEMLCZaE9FXs3wEEe5J",
       "03a981e155064f6bb32fa77fcdaf6586bd69f4f6a1b92857ddc763d4849d4bdb",
-      "19q5oAvYgsdjmnKoJT2nQL5eUdarQ11Vr"
+      "19q5oAvYgsdjmnKoJT2nQL5eUdarQ11Vr",
+      "96be6d9a0c0f06f1e53f7ab9378c780e7ad015ebdd54adc347610d3e03aecab4",
+      "1K-e05_btWw9iQ8NinG7NEive4QM40QGs",
+      "f89a32b1a9e009dd0bd83f4e6a2ae666b0e5434a2263ba883be691d7b4e3a2ce",
+      "1m_a3WpZHS6RYbYonexFMh2nhxfmctQn3",
+      "64a0ddf9dbd607298dff7d0408ec65e383d2912348f58adf86cdcc9129b0c3ca",
+      "1jUWJb2TGWuDXQGCXlfHOqV1uW7Xrj7XC",
+      "f605aee08a161a73de7248c714223af6b89de5542f63078c18f12c9f31cf393a",
+      "1jMEyl6ywVa9KJ5xkDp0sjLjedH1M_TQX"
     ]
   }
 }
