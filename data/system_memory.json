@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-26T19:46:31.831683+00:00"
+    "last_updated": "2026-08-27T06:44:20.832888+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "109lbJqEt9uLjEg6BKDoVaU1jUybXjs3i",
-    "last_processed_timestamp": "2026-08-27T03:46:31.829525+08:00",
+    "last_processed_media_item_id": "18GrhY32Iyv4zFeSYgyITQOZeQESjKy7R",
+    "last_processed_timestamp": "2026-08-27T14:44:20.830462+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1240,
+    "last_published_post_id": 1245,
     "last_published_timestamp": null,
-    "total_posts_published": 44,
+    "total_posts_published": 45,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -56,7 +56,8 @@
       "Shanghai Disneyland's Night Spectacular: Logistics & Viewing Guide",
       "Shanghai Disneyland: Capturing the Enchanted Night Spectacle",
       "Shanghai's AIRPARK: Art, Retail & Modern Urban Design in Minhang",
-      "Urban China: Panda Lattes, Popeyes & Experiential Retail"
+      "Urban China: Panda Lattes, Popeyes & Experiential Retail",
+      "Nanjing Road East: Shanghai's Historic Pedestrian Shopping Artery"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -412,11 +413,17 @@
       "Urban China",
       "Modern Lifestyle China",
       "Consumer Experience China",
-      "Retail Trends China"
+      "Retail Trends China",
+      "Nanjing Road East",
+      "Pedestrian Street",
+      "Mao Chang Optical",
+      "Shanghai No.1 Department Store",
+      "Alipay China",
+      "Shanghai Landmarks"
     ]
   },
   "research": {
-    "session_count": 110,
+    "session_count": 111,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -637,7 +644,15 @@
       "1d1724c7fa3fdf252f150cbf059fa46ba72d2bb8490a2af0d562d18b12640eb7",
       "1O1cxQnQrs_DFXovThhyrldVbGpeFjXDl",
       "8e717394ca3b075398d81cbcc52d533bf5d9528d12e79c1969d32d3f326f15b0",
-      "1zCNUan6XEeFvgJgGb5msbV8wLG6Ix0-b"
+      "1zCNUan6XEeFvgJgGb5msbV8wLG6Ix0-b",
+      "c15d56ed75c6c47fb50bb32ccc838ccdc21402ac5ca6b411cd5b62644184f239",
+      "18GrhY32Iyv4zFeSYgyITQOZeQESjKy7R",
+      "e8850d09a6b5e91dc01ce6a04b11b9c3fcba0b4109637dc5c282165fa1030587",
+      "1d9jo3YegpFlzMxaM3KevGMiuhaKXPZUB",
+      "c680454052be9e25f028e7813c7261b37da7a8d9131b1e6316037732625a83ad",
+      "1L_fZryQLan47DkEMLCZaE9FXs3wEEe5J",
+      "03a981e155064f6bb32fa77fcdaf6586bd69f4f6a1b92857ddc763d4849d4bdb",
+      "19q5oAvYgsdjmnKoJT2nQL5eUdarQ11Vr"
     ]
   }
 }
