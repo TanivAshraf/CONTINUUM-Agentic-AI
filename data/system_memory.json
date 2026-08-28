@@ -2,11 +2,11 @@
   "_meta": {
     "description": "CONTINUUM Agentic AI — persistent system memory",
     "version": "1.0.0",
-    "last_updated": "2026-08-27T21:40:23.783900+00:00"
+    "last_updated": "2026-08-28T08:46:45.879386+00:00"
   },
   "google_photos": {
-    "last_processed_media_item_id": "1K-e05_btWw9iQ8NinG7NEive4QM40QGs",
-    "last_processed_timestamp": "2026-08-27T23:59:41.297601+08:00",
+    "last_processed_media_item_id": "1aLUwSb2rQM1U8hcWB-Ubx1iu6nftjTSJ",
+    "last_processed_timestamp": "2026-08-28T16:46:45.878010+08:00",
     "total_items_processed": 0
   },
   "gmail": {
@@ -15,9 +15,9 @@
     "total_messages_processed": 5
   },
   "wordpress": {
-    "last_published_post_id": 1250,
+    "last_published_post_id": 1255,
     "last_published_timestamp": null,
-    "total_posts_published": 46,
+    "total_posts_published": 47,
     "draft_queue": [],
     "past_titles": [
       "Navigating the Shanghai to Suzhou High-Speed Rail Corridor",
@@ -58,7 +58,8 @@
       "Shanghai's AIRPARK: Art, Retail & Modern Urban Design in Minhang",
       "Urban China: Panda Lattes, Popeyes & Experiential Retail",
       "Nanjing Road East: Shanghai's Historic Pedestrian Shopping Artery",
-      "Shanghai Yuyuan Garden: Nocturnal Glow & Crab Roe Tangbao"
+      "Shanghai Yuyuan Garden: Nocturnal Glow & Crab Roe Tangbao",
+      "Shanghai Nights: Bund's Grandeur Meets Lujiazui's Future"
     ],
     "past_topics": [
       "Shanghai Railway Station",
@@ -428,11 +429,19 @@
       "Tangbao",
       "Crab Roe Soup Dumpling",
       "Xièhuáng Tāngbāo",
-      "Mobile Payment China"
+      "Mobile Payment China",
+      "Shanghai Bund",
+      "Lujiazui Skyline",
+      "Huangpu River",
+      "Oriental Pearl TV Tower",
+      "Shanghai Tower",
+      "Shanghai Metro Line 2",
+      "Shanghai History",
+      "Modern China"
     ]
   },
   "research": {
-    "session_count": 115,
+    "session_count": 116,
     "last_session_timestamp": null,
     "processed_file_hashes": [
       "1fSyzyDJyRDXO8TRgWcGTvNOW43bg5Uqx",
@@ -669,7 +678,15 @@
       "64a0ddf9dbd607298dff7d0408ec65e383d2912348f58adf86cdcc9129b0c3ca",
       "1jUWJb2TGWuDXQGCXlfHOqV1uW7Xrj7XC",
       "f605aee08a161a73de7248c714223af6b89de5542f63078c18f12c9f31cf393a",
-      "1jMEyl6ywVa9KJ5xkDp0sjLjedH1M_TQX"
+      "1jMEyl6ywVa9KJ5xkDp0sjLjedH1M_TQX",
+      "69fa32e4c7c20b449142f7280907f8b32ba804b37ee33a0146647c7e90ef1b5b",
+      "1aLUwSb2rQM1U8hcWB-Ubx1iu6nftjTSJ",
+      "87ca8189edc5adde8fae2ee37bc932eeb125a99ee1c732cc06541d3ad2701fa8",
+      "1ObtKnd9j4dbZX0w20-SbFNnAjKxjVHqs",
+      "dd9e789aa351a95c28a8071f320246b4f4c1346f9dda44fc65ac6b0e4657e545",
+      "1PCh9-X43QO6roYHny-Lmt2GnPUutq9kK",
+      "122e5a138168fcb80f76a867854d8791b90aa127c848cfc02e65018413a12d1a",
+      "138NxITzRI8QS2phI2lKj1O5fDJ22RL7g"
     ]
   }
 }
